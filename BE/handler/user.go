@@ -23,7 +23,7 @@ func (h *Handler) CreateUser(c *gin.Context){
 
 	hashedPassword,_ := helper.HashPassword(register.Password)
 	user := user.User{
-		Role : "admin",
+		Role : "student",
 		Name : register.Name,
 		Email: register.Email,
 		Password: hashedPassword,

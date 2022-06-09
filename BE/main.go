@@ -10,9 +10,7 @@ import (
 	"belajar-golang/model/user"
 	"belajar-golang/repository"
 	"belajar-golang/router"
-	"time"
 
-	"github.com/gin-contrib/cors"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 ) 
@@ -37,19 +35,6 @@ func main(){
 	repo := repository.NewDB(db)
 	Handler := handler.NewRepo(repo)
 	r := router.Setuprouter(Handler)
-
- 
-	r.Use(cors.New(cors.Config{
-        AllowOrigins:     []string{"http://localhost:4200"},
-        AllowMethods:     []string{"PUT","PATCH","GET","POST"},
-        AllowHeaders:     []string{"Origin"},
-        ExposeHeaders:    []string{"Content-Length"},
-        AllowCredentials: true,
-        AllowOriginFunc: func(origin string) bool {
-            return origin == "https://github.com"
-        },
-        MaxAge: 12 * time.Hour,
-    }))
 
 	r.Run()
 } 
