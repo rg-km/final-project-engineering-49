@@ -38,11 +38,10 @@ func main(){
 	Handler := handler.NewRepo(repo)
 	r := router.Setuprouter(Handler)
 
- 
 	r.Use(cors.New(cors.Config{
-        AllowOrigins:     []string{"http://localhost:4200"},
+        AllowOrigins:     []string{"http://localhost:3000"},
         AllowMethods:     []string{"PUT","PATCH","GET","POST"},
-        AllowHeaders:     []string{"Origin"},
+        AllowHeaders:     []string{"Origin","Token"},
         ExposeHeaders:    []string{"Content-Length"},
         AllowCredentials: true,
         AllowOriginFunc: func(origin string) bool {
@@ -51,6 +50,7 @@ func main(){
         MaxAge: 12 * time.Hour,
     }))
 
+ 
 	r.Run()
 } 
 
