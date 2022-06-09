@@ -28,7 +28,7 @@ var _ = Describe("JWT", func() {
 
 		It("should return authorized when given correct credential", func() {
 		
-			bodyReader := strings.NewReader(`{"email": "alamin.ibad@gmail.com", "password": "alamin123"}`)
+			bodyReader := strings.NewReader(`{"email": "admin@gmail.com", "password": "admin123"}`)
 			repo := repository.NewDB(db)
 			h := handler.NewRepo(repo)
 			r := router.Setuprouter(h)
