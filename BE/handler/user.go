@@ -57,5 +57,31 @@ func (h *Handler) GetCredentialUser(c *gin.Context){
 }
 
 func (h *Handler) EditUser(c *gin.Context){
-	// TO DO Nashihul Ibad
+	var editUserRequest user.EditUserRequest
+	errReq := c.ShouldBindJSON(&editUserRequest)
+	if (errReq != nil) {
+		c.JSON(http.StatusBadRequest,errReq)
+		return
+	} 
+
+	if (editUserRequest.Password != editUserRequest.ConfirmPassword){
+		c.JSON(http.StatusBadRequest,"Password not match")
+		return
+	}
+
+	var user user.User
+	user.Name = editUserRequest.Name
+	user.Email = editUserRequest.Email
+	user.Password,_ = helper.HashPassword(editUserRequest.Password)
+	userUpdated,err := h.repo.UpdateUser(user)
+	if err != nil {
+		c.JSON(http.StatusBadRequest,err)
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message" : "Successfully",
+		"status" : 200,
+		"data" : userUpdated,
+	})
 }

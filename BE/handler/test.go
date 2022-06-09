@@ -30,3 +30,6 @@ func (h *Handler) DeleteTest(c *gin.Context){
 	//TO DO Nashihul Ibad
 }
 
+func (h *Handler) SubmitTest(c *gin.Context){
+	// TO DO Nashihul Ibad
+}

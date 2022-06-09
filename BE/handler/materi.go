@@ -36,9 +36,6 @@ func (h *Handler) DeleteMateri(c *gin.Context){
 	// TO DO Safa Auliya
 }
 
-func (h *Handler) SubmitMateri(c *gin.Context){
-	// TO DO Safa Auliya
-}
 
 
 
