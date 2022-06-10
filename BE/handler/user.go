@@ -9,6 +9,7 @@ import (
 )
  
 func (h *Handler) CreateUser(c *gin.Context){
+
 	var register user.Register
 	errReq := c.ShouldBindJSON(&register)
 	if (errReq != nil) {
@@ -21,9 +22,15 @@ func (h *Handler) CreateUser(c *gin.Context){
 		return
 	}
 
+	existEmail := h.repo.CheckEmailIsExist(register.Email)
+	if existEmail {
+		c.JSON(http.StatusBadRequest,"email already exist")
+		return
+	}
+
 	hashedPassword,_ := helper.HashPassword(register.Password)
 	user := user.User{
-		Role : "user",
+		Role : "student",
 		Name : register.Name,
 		Email: register.Email,
 		Password: hashedPassword,
@@ -40,10 +47,14 @@ func (h *Handler) CreateUser(c *gin.Context){
 		"status" : 200,
 		"data" : createdUser,
 	})
+
 }
 
 func (h *Handler) GetCredentialUser(c *gin.Context){
-	user,err := h.repo.GetUserByToken(c.Request.Header["Token"])
+
+	tknStr := c.Request.Header["Token"]
+	
+	user,err := h.repo.GetUserByToken(tknStr)
 	if err != nil {
 		c.JSON(http.StatusForbidden,"Forbidden")
 		return
@@ -57,31 +68,5 @@ func (h *Handler) GetCredentialUser(c *gin.Context){
 }
 
 func (h *Handler) EditUser(c *gin.Context){
-	var editUserRequest user.EditUserRequest
-	errReq := c.ShouldBindJSON(&editUserRequest)
-	if (errReq != nil) {
-		c.JSON(http.StatusBadRequest,errReq)
-		return
-	} 
 
-	if (editUserRequest.Password != editUserRequest.ConfirmPassword){
-		c.JSON(http.StatusBadRequest,"Password not match")
-		return
-	}
-
-	var user user.User
-	user.Name = editUserRequest.Name
-	user.Email = editUserRequest.Email
-	user.Password,_ = helper.HashPassword(editUserRequest.Password)
-	userUpdated,err := h.repo.UpdateUser(user)
-	if err != nil {
-		c.JSON(http.StatusBadRequest,err)
-		return
-	}
-
-	c.JSON(http.StatusOK, gin.H{
-		"message" : "Successfully",
-		"status" : 200,
-		"data" : userUpdated,
-	})
 }

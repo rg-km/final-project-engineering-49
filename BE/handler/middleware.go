@@ -3,25 +3,45 @@ package handler
 import (
 	"net/http"
 
+	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 )
 
 func (h *Handler) CheckUser(c *gin.Context) {
-	ok := h.repo.IsLogin(c.Request.Header["Token"])
-	if !ok {
+
+	tknStr := c.Request.Header["Token"]
+	claims := &Claims{}
+	var jwtKey = []byte("key")
+	tkn, _ := jwt.ParseWithClaims(tknStr[0], claims, func(token *jwt.Token) (interface{}, error) {
+		return jwtKey, nil
+	})
+
+	if !tkn.Valid {
 		c.AbortWithStatusJSON(http.StatusForbidden,"Forbidden")
 		return
-	} else{
-		c.Next()
 	}
+	c.Next()
 }  
 
 func (h *Handler) CheckAdmin(c *gin.Context) {
-	ok := h.repo.IsAdmin(c.Request.Header["Token"])
-	if !ok {
+	
+	tknStr := c.Request.Header["Token"]
+	claims := &Claims{}
+	var jwtKey = []byte("key")
+	tkn, _ := jwt.ParseWithClaims(tknStr[0], claims, func(token *jwt.Token) (interface{}, error) {
+		return jwtKey, nil
+	})
+
+	if !tkn.Valid {
 		c.AbortWithStatusJSON(http.StatusForbidden,"Forbidden")
 		return
-	} else{
-		c.Next()
 	}
-}  
+
+	if claims.Role != "admin" {
+		c.AbortWithStatusJSON(http.StatusForbidden,"Forbidden")
+		return
+	}
+
+	c.Next()
+}   
+
