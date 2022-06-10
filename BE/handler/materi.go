@@ -4,9 +4,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (h *Handler) GetCountMateri(c *gin.Context) {
-	// TO DO Safa Auliya
-}
 
 func (h *Handler) GetMateriByPage(c *gin.Context){
 	// TO DO Safa Auliya

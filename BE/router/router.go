@@ -33,15 +33,17 @@ func Setuprouter(Handler *handler.Handler) *gin.Engine {
 	{
 		r.GET("/user",  Handler.GetCredentialUser)
 		r.POST("/user/edit",Handler.EditUser)
+		r.GET("/user/count")
 
 		r.GET("/materis",Handler.GetAllMateri)
 		r.GET("/materis/:page",Handler.GetMateriByPage)
 		r.POST("/materis/filter",Handler.GetMateriByFilter)
 		r.GET("/materi/:id",Handler.GetMateriByID)
-		r.GET("/materi/count",Handler.GetCountMateri)
+		r.GET("/materi/count",Handler.GetCountOfMateri)
 
 		r.GET("/test/materi/:id",Handler.GetTestByMateri)
 		r.POST("/test/submit",Handler.SubmitTest)
+		r.GET("/test/count",Handler.GetCountOfTest)
 	}
 
 	//admin authorization
