@@ -27,7 +27,7 @@ func (h *Handler) Login(c *gin.Context){
  
 	user, err := h.repo.Login(loginRequest)
 	if err  != nil {
-		c.JSON(http.StatusNotFound,err.Error())
+		c.JSON(http.StatusBadRequest,err.Error())
 		return 
 	}
 
