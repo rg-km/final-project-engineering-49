@@ -2,7 +2,7 @@ package handler
 
 import "github.com/gin-gonic/gin"
 
-func (h *Handler) GetCountTestUser(c *gin.Context) {
+func (h *Handler) GetCountOfTest(c *gin.Context) {
 	// TO DO Nashihul Ibad
 }
 
