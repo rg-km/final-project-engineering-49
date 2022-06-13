@@ -1,15 +1,21 @@
 package helper
 
 import (
+	"math"
 	"math/rand"
+	"strconv"
+	"strings"
 	"time"
 
 	"golang.org/x/crypto/bcrypt"
 )
 
 func GetFileName(id int, originalName string) string {
-	// TO DO Nashihul Ibad
-	return "";
+	idString := strconv.Itoa(id)
+	microTime := strconv.Itoa(int(time.Now().UnixNano() / int64(time.Millisecond)))
+	count := strings.Count(originalName, "")
+	limit := math.Min(float64(count), 10)
+	return string(originalName[:int(limit-1)]) + microTime + "-" + idString
 }
 
 func HashPassword(password string) (string, error) {
