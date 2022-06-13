@@ -7,6 +7,18 @@ import (
 
 	"github.com/gin-gonic/gin"
 )
+
+func (h *Handler) CreateAdmin(c *gin.Context){
+	err := h.repo.CreateAdmin()
+	if err != nil {
+		c.JSON(http.StatusBadRequest,err.Error())
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{
+		"message" : "Successfully",
+		"status" : 200,
+	})
+}
  
 func (h *Handler) CreateUser(c *gin.Context){
 
