@@ -13,7 +13,3 @@ func (h *Handler) GetCountOfMateri(c *gin.Context) {
 func (h *Handler) GetCountOfStudent(c *gin.Context){
 	//TO DO Nashihul Ibad
 }
-
-func (h *Handler) GetCountOfTest(c *gin.Context){
-	//TO DO Nashihul Ibad
-}

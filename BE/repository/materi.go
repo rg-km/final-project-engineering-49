@@ -9,17 +9,17 @@ func (h *Repository) CountMateri() (int,error){
 	return 0,nil
 }
 
-func (h *Repository) FindAllMateri() ([]materi.Materi, int ,error){
-	// TO DO Safa Auliya
-	return nil,0,nil	
-}
-
 func (h *Repository) FindMateriByPage(Page int) ([]materi.Materi, int ,error) {
 	// TO DO Safa Auliya
 	return nil,0,nil	
 }
 
 func (h *Repository) FindMateriByFilter(materiFilterRequest materi.MateriFilterRequest) ([]materi.Materi, int ,error) {
+	// TO DO Safa Auliya
+	return nil,0,nil	
+}
+
+func (h *Repository) FindAllMateri() ([]materi.Materi, int ,error){
 	// TO DO Safa Auliya
 	return nil,0,nil	
 }
