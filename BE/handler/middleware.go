@@ -10,11 +10,20 @@ import (
 func (h *Handler) CheckUser(c *gin.Context) {
 
 	tknStr := c.Request.Header["Token"]
+	if tknStr == nil {
+		c.AbortWithStatusJSON(http.StatusForbidden,"Forbidden")
+		return
+	}
 	claims := &Claims{}
 	var jwtKey = []byte("key")
-	tkn, _ := jwt.ParseWithClaims(tknStr[0], claims, func(token *jwt.Token) (interface{}, error) {
+	tkn, err := jwt.ParseWithClaims(tknStr[0], claims, func(token *jwt.Token) (interface{}, error) {
 		return jwtKey, nil
 	})
+
+	if err != nil {
+		c.AbortWithStatusJSON(http.StatusForbidden,"Forbidden")
+		return
+	}
 
 	if !tkn.Valid {
 		c.AbortWithStatusJSON(http.StatusForbidden,"Forbidden")
@@ -26,11 +35,20 @@ func (h *Handler) CheckUser(c *gin.Context) {
 func (h *Handler) CheckAdmin(c *gin.Context) {
 	
 	tknStr := c.Request.Header["Token"]
+	if tknStr == nil {
+		c.AbortWithStatusJSON(http.StatusForbidden,"Forbidden")
+		return
+	}
 	claims := &Claims{}
 	var jwtKey = []byte("key")
-	tkn, _ := jwt.ParseWithClaims(tknStr[0], claims, func(token *jwt.Token) (interface{}, error) {
+	tkn, err := jwt.ParseWithClaims(tknStr[0], claims, func(token *jwt.Token) (interface{}, error) {
 		return jwtKey, nil
 	})
+
+	if err != nil {
+		c.AbortWithStatusJSON(http.StatusForbidden,"Forbidden")
+		return
+	}
 
 	if !tkn.Valid {
 		c.AbortWithStatusJSON(http.StatusForbidden,"Forbidden")
