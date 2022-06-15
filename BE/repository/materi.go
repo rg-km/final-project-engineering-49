@@ -13,6 +13,7 @@ func (h *Repository) CountMateri() (int, error) {
 		return 0,err
 	}
 	return 0,nil
+}
 
 func (h *Repository) FindMateriByPage(Page int) ([]materi.Materi, int, error) {
 	// TO DO Safa Auliya
