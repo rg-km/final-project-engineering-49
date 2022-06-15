@@ -15,10 +15,55 @@ import (
 
 func (h *Handler) GetMateriByPage(c *gin.Context) {
 	// TO DO Safa Auliya
+	pageN, errConv := strconv.Atoi(c.Param("page"))
+	if errConv != nil {
+		c.JSON(http.StatusBadRequest, errConv.Error())
+		return
+	}
+
+	materis, count, err := h.repo.FindMateriByPage(pageN)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, err.Error())
+		return
+	}
+
+	data := materi.MateriResponse{
+		Materi: materis,
+		Count:  count,
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Successfully",
+		"status":  200,
+		"data":    data,
+	})
 }
 
 func (h *Handler) GetMateriByFilter(c *gin.Context) {
 	// TO DO Safa Auliya
+	var materiFilterRequest materi.MateriFilterRequest
+	errReq := c.ShouldBindJSON(&materiFilterRequest)
+	if errReq != nil {
+		c.JSON(http.StatusBadRequest, errReq.Error())
+		return
+	}
+
+	materis, count, err := h.repo.FindMateriByFilter(materiFilterRequest)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, err.Error())
+		return
+	}
+
+	data := materi.MateriResponse{
+		Materi: materis,
+		Count:  count,
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Successfully",
+		"status":  200,
+		"data":    data,
+	})
 }
 
 func (h *Handler) GetMateriByID(c *gin.Context) {
