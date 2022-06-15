@@ -1,10 +1,8 @@
 package repository
 
 import (
-	"belajar-golang/helper"
 	"belajar-golang/model/user"
 	"fmt"
-	"strconv"
 )
 
 func (h *Repository) Login(login user.Login) (user.User, error){
@@ -20,14 +18,6 @@ func (h *Repository) Login(login user.Login) (user.User, error){
 }
 
 
-func (h *Repository) UpdateToken(user user.User) (user.User, error){
-
-	token := helper.String(32)+strconv.Itoa(user.ID);
-	user.Token = token
-	h.db.Save(&user)
-
-	return user,nil
-}
 
 
 
