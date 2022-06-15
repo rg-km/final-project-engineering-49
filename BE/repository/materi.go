@@ -12,7 +12,7 @@ func (h *Repository) CountMateri() (int, error) {
 	if err != nil {
 		return 0,err
 	}
-	return 0,nil
+	return int(count),nil
 }
 
 func (h *Repository) FindMateriByPage(Page int) ([]materi.Materi, int, error) {
