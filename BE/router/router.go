@@ -35,6 +35,7 @@ func Setuprouter(Handler *handler.Handler) *gin.Engine {
 		r.POST("/materi/filter",Handler.GetMateriByFilter)
 		r.GET("/materi/:id",Handler.GetMateriByID)
 		r.GET("/materi/count",Handler.GetCountMateri)
+		
 	}	
 
 	r.Use(Handler.CheckAdmin)
