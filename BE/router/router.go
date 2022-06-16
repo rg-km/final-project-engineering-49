@@ -37,7 +37,7 @@ func Setuprouter(Handler *handler.Handler) *gin.Engine {
 		r.GET("/materi/count",Handler.GetCountMateri)
 	}	
 
-	// r.Use(Handler.CheckAdmin)
+	r.Use(Handler.CheckAdmin)
 	{
 		r.POST("/materi",Handler.CreateMateri)
 		r.POST("/materi/update",Handler.UpdateMateri)
