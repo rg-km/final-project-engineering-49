@@ -37,7 +37,6 @@ func (h *Repository) FindAllMateri() ([]materi.Materi, int ,error) {
 	return materis,count,nil
 }
 
-
 func (h *Repository) FindMateriByPage(Page int) ([]materi.Materi, int, error) {
 
 	limit := 3
@@ -105,8 +104,6 @@ func (h *Repository) FindMateriByFilter(materiFilterRequest materi.MateriFilterR
 	rows.Close()
 	return materis,count,nil
 }
-
-//row := r.db.QueryRow(sqlStmt, nim)
 
 func (h *Repository) FindMateriByID(MateriID int) (materi.Materi, error) {
 	// TO DO Safa Auliya
