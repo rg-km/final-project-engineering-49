@@ -2,134 +2,161 @@ package repository
 
 import (
 	"belajar-golang/model/materi"
-	"fmt"
+	"time"
 )
 
-func (h *Repository) CountMateri() (int, error) {
-	// TO DO Safa Auliya
-	var count int64
-	err := h.db.Model(&materi.Materi{}).Count(&count).Error
+
+
+func (h *Repository) FindAllMateri() ([]materi.Materi, int ,error) {
+	var sqlStatement string
+	var materis []materi.Materi
+	sqlStatement = `SELECT id,title,contain,file_name,creator 
+	FROM materis`
+	rows, err:= h.db.Query(sqlStatement)
 	if err != nil {
-		return 0,err
+		return nil,0, err
 	}
-	return int(count),nil
+	var count int
+	for rows.Next() {
+		var materiTemp materi.Materi
+		err := rows.Scan(&materiTemp.ID,&materiTemp.Title,&materiTemp.Contain,&materiTemp.FileName,&materiTemp.Creator)
+		if err != nil {
+			return nil,0,err
+		}
+		newMateri := materi.Materi{
+			ID : materiTemp.ID,
+			Title: materiTemp.Title,
+			Contain: materiTemp.Contain,
+			FileName: materiTemp.FileName,
+			Creator: materiTemp.Creator,
+		}
+		materis = append(materis, newMateri)
+		count++
+	}
+	rows.Close()
+	return materis,count,nil
 }
 
+
 func (h *Repository) FindMateriByPage(Page int) ([]materi.Materi, int, error) {
-	// TO DO Safa Auliya
+
 	limit := 3
 	offset := (Page - 1) * limit
 
+	var sqlStatement string
 	var materis []materi.Materi
-	errGet := h.db.Limit(limit).Offset(offset).Find(&materis).Error
-	if errGet != nil {
-		return materis,0,errGet
+	sqlStatement = `SELECT id,title,contain,file_name,creator 
+	FROM materis LIMIT ? OFFSET ?`
+	rows, err:= h.db.Query(sqlStatement,limit,offset)
+	if err != nil {
+		return nil,0, err
 	}
-
-	var countRecord int64
-	errCount := h.db.Model(&materi.Materi{}).Count(&countRecord).Error
-	if errCount != nil {
-		return materis,0,errCount
+	var count int
+	for rows.Next() {
+		var materiTemp materi.Materi
+		err := rows.Scan(&materiTemp.ID,&materiTemp.Title,&materiTemp.Contain,&materiTemp.FileName,&materiTemp.Creator)
+		if err != nil {
+			return nil,0,err
+		}
+		newMateri := materi.Materi{
+			ID : materiTemp.ID,
+			Title: materiTemp.Title,
+			Contain: materiTemp.Contain,
+			FileName: materiTemp.FileName,
+			Creator: materiTemp.Creator,
+		}
+		materis = append(materis, newMateri)
+		count++
 	}
-	return materis,int(countRecord),nil
+	rows.Close()
+	return materis,count,nil
 }
 
 func (h *Repository) FindMateriByFilter(materiFilterRequest materi.MateriFilterRequest) ([]materi.Materi, int, error) {
-	// TO DO Safa Auliya
-	limit := 10
+	
+	limit := 3
 	offset := (materiFilterRequest.Page - 1) * limit
-
+	
+	var sqlStatement string
 	var materis []materi.Materi
-	var countRecord int64
-
-	if materiFilterRequest.LessonID == 0{
-
-		errGet := h.db.Where("title like ?","%"+materiFilterRequest.Keyword+"%").
-		Limit(limit).Offset(offset).Find(&materis).Error
-		if errGet != nil {
-			return materis,0,errGet
-		}
-
-		errCount := h.db.Model(&materi.Materi{}).
-		Where("title like ?","%"+materiFilterRequest.Keyword+"%").Count(&countRecord).Error
-		if errCount != nil {
-			return materis,0,errCount
-		}
-	} else {
-		errGet := h.db.Where("title like ? and lesson_id = ?","%"+materiFilterRequest.Keyword+"%",materiFilterRequest.LessonID).
-		Limit(limit).Offset(offset).Find(&materis).Error
-		if errGet != nil {
-			return materis,0,errGet
-		}
-
-		errCount := h.db.Model(&materi.Materi{}).
-		Where("title like ? and lesson_id = ?","%"+materiFilterRequest.Keyword+"%",materiFilterRequest.LessonID).
-		Count(&countRecord).Error
-		if errCount != nil {
-			return materis,0,errCount
-		}
+	sqlStatement = `SELECT id,title,contain,file_name,creator 
+	FROM materis WHERE title LIKE ? LIMIT ? OFFSET ?`
+	rows, err:= h.db.Query(sqlStatement,"%"+materiFilterRequest.Keyword+"%",limit,offset)
+	if err != nil {
+		return nil,0, err
 	}
-
-	return materis,int(countRecord),nil
+	var count int
+	for rows.Next() {
+		var materiTemp materi.Materi
+		err := rows.Scan(&materiTemp.ID,&materiTemp.Title,&materiTemp.Contain,&materiTemp.FileName,&materiTemp.Creator)
+		if err != nil {
+			return nil,0,err
+		}
+		newMateri := materi.Materi{
+			ID : materiTemp.ID,
+			Title: materiTemp.Title,
+			Contain: materiTemp.Contain,
+			FileName: materiTemp.FileName,
+			Creator: materiTemp.Creator,
+		}
+		materis = append(materis, newMateri)
+		count++
+	}
+	rows.Close()
+	return materis,count,nil
 }
 
-func (h *Repository) FindAllMateri() ([]materi.Materi, int, error) {
-	// TO DO Safa Auliya
-	var materis []materi.Materi
-	errGet := h.db.Find(&materis).Error
-	if errGet != nil {
-		return materis, 0, errGet
-	}
-
-	var countRecord int64
-	errCount := h.db.Model(&materi.Materi{}).Count(&countRecord).Error
-	if errCount != nil {
-		return materis, 0, errCount
-	}
-	return materis, int(countRecord), nil
-}
+//row := r.db.QueryRow(sqlStmt, nim)
 
 func (h *Repository) FindMateriByID(MateriID int) (materi.Materi, error) {
 	// TO DO Safa Auliya
-	var materi materi.Materi
+	var sqlStatement string
+	var materiTemp materi.Materi
 
-	err := h.db.Where("id = ?", MateriID).First(&materi).Error
+	sqlStatement = `SELECT id,title,contain,file_name,creator 
+	FROM materis WHERE id = ?`
+
+	row := h.db.QueryRow(sqlStatement, MateriID)
+	err := row.Scan(&materiTemp.ID,&materiTemp.Title,&materiTemp.Contain,&materiTemp.FileName,&materiTemp.Creator)
 	if err != nil {
-		return materi, err
+		return materiTemp, err
 	}
-
-	return materi, nil
+	return materiTemp,nil
 }
 
 func (h *Repository) CreateMateri(materi materi.Materi) (materi.Materi, error) {
 	// TO DO Safa Auliya
-	err := h.db.Create(&materi).Error
+	sqlStmt := `INSERT INTO materis (title, contain,file_name,creator,created_at, updated_at) 
+	VALUES (?,?,?,?,?,?);`
+	datetime := time.Now()  
+	_, err := h.db.Exec(sqlStmt, materi.Title,materi.Contain,materi.FileName,materi.Creator,datetime,datetime);
 	if err != nil {
 		return materi, err
 	}
-	return materi, nil
+ 
+	return materi,nil
 }
 
 func (h *Repository) UpdateMateri(materi materi.Materi) (materi.Materi, error) {
 	// TO DO Safa Auliya
-	err := h.db.Save(&materi).Error
+	datetime := time.Now()  
+	sqlStmt := `
+		UPDATE materis
+		SET title = ?, contain = ?, file_name = ?, creator = ?, updated_at = ?
+		WHERE id = ?
+	`
+	_, err := h.db.Exec(sqlStmt,materi.Title,materi.Contain,materi.FileName,materi.Creator,datetime,materi.ID)
 	if err != nil {
-		return materi, err
+		return materi,err
 	}
-	return materi, nil
+
+	return materi,nil
 }
 
 func (h *Repository) DeleteMateri(ID int) error {
 	// TO DO Safa Auliya
-	var materi materi.Materi
-	err := h.db.Where("id = ?", ID).First(&materi).Error
-	if err != nil {
-		return err
-	}
-	if materi.ID == 0 {
-		return fmt.Errorf("Data not found!")
-	}
-	err = h.db.Delete(&materi).Error
+	sqlStmt := `DELETE FROM materis WHERE id = ?`
+	_, err := h.db.Exec(sqlStmt, ID)
 	if err != nil {
 		return err
 	}
