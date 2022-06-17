@@ -7,9 +7,8 @@ type User struct {
 	Role string
 	Name string
 	Email string
-	Password string
-	Token string 
-	CreatedAt time.Time
-	UpdatedAt time.Time
+	Password string `json:"-"`
+	CreatedAt time.Time `json:"-"`
+	UpdatedAt time.Time `json:"-"`
 }
 
