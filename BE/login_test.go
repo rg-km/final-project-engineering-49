@@ -83,10 +83,10 @@ var _ = Describe("JWT", func() {
 		It("should return successfully", func() {
 			bodyReader := strings.NewReader(`
 			{
-				"Name" : "admin",
-				"Email": "admin@gmail.com", 
-				"Password": "admin123",
-				"ConfirmPassword" : "admin123"
+				"name" : "admin",
+				"email": "admin@gmail.com", 
+				"password": "admin123",
+				"confirm_password" : "admin123"
 			}`)
 			repo := repository.NewDB(db)
 			h := handler.NewRepo(repo)
