@@ -27,26 +27,26 @@ func Setuprouter(Handler *handler.Handler) *gin.Engine {
 	r.POST("/register", Handler.CreateUser)
 	r.POST("/login", Handler.Login)
 	
-	r.Use(Handler.CheckUser)
+	// r.Use(Handler.CheckUser)
 	{
 		r.GET("/user",  Handler.GetCredentialUser)
-		r.GET("/materis",Handler.GetAllMateri)
-		r.GET("/materis/:page",Handler.GetMateriByPage)
-		r.POST("/materi/filter",Handler.GetMateriByFilter)
-		r.GET("/materi/:id",Handler.GetMateriByID)
+		r.GET("/materi",Handler.GetAllMateri)
+		r.GET("/materi/id/:id",Handler.GetMateriByID)
+		r.GET("/materi/:page/:limit",Handler.GetMateriByPage)
+		r.GET("/materi/filter/:page/:limit",Handler.GetMateriByFilter)
 		r.GET("/materi/count",Handler.GetCountMateri)
 		r.GET("/test/materi/:id",Handler.GetTestByMateri)
 		r.POST("/test/submit",Handler.SubmitTest)
 		r.GET("/test/count",Handler.GetCountTest)
 	}	
 
-	r.Use(Handler.CheckAdmin)
+	// r.Use(Handler.CheckAdmin)
 	{
 		r.POST("/materi",Handler.CreateMateri)
 		r.POST("/materi/update",Handler.UpdateMateri)
-		r.GET("/materi/delete/:id",Handler.DeleteMateri)
+		r.DELETE("/materi/delete/:id",Handler.DeleteMateri)
 		r.POST("/test",Handler.CreateTest)
-		r.GET("/test/delete/:id",Handler.DeleteTest)
+		r.DELETE("/test/delete/:id",Handler.DeleteTest)
 	}
 
 	return r

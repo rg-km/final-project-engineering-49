@@ -32,13 +32,10 @@ func (h Handler) GetAllMateri(c *gin.Context){
 
 func (h *Handler) GetMateriByPage(c *gin.Context) {
 	// TO DO Safa Auliya
-	pageN, errConv := strconv.Atoi(c.Param("page"))
-	if errConv != nil {
-		c.JSON(http.StatusBadRequest, errConv.Error())
-		return
-	}
-
-	materis, count, err := h.repo.FindMateriByPage(pageN)
+	pageN, _ := strconv.Atoi(c.Param("page"))
+	limitN, _ := strconv.Atoi(c.Param("limit"))
+	
+	materis, count, err := h.repo.FindMateriByPage(pageN,limitN)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, err.Error())
 		return
@@ -57,13 +54,15 @@ func (h *Handler) GetMateriByPage(c *gin.Context) {
 }
 
 func (h *Handler) GetMateriByFilter(c *gin.Context) {
-	// TO DO Safa Auliya
+
+	limit, _ := strconv.Atoi(c.Param("limit"))
+	page, _ := strconv.Atoi(c.Param("page"))
+	keyword := c.Query("keyword")
+
 	var materiFilterRequest materi.MateriFilterRequest
-	errReq := c.ShouldBindJSON(&materiFilterRequest)
-	if errReq != nil {
-		c.JSON(http.StatusBadRequest, errReq.Error())
-		return
-	}
+	materiFilterRequest.Limit = limit
+	materiFilterRequest.Page = page
+	materiFilterRequest.Keyword = keyword
 
 	materis, count, err := h.repo.FindMateriByFilter(materiFilterRequest)
 	if err != nil {

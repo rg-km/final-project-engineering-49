@@ -37,9 +37,9 @@ func (h *Repository) FindAllMateri() ([]materi.Materi, int ,error) {
 	return materis,count,nil
 }
 
-func (h *Repository) FindMateriByPage(Page int) ([]materi.Materi, int, error) {
+func (h *Repository) FindMateriByPage(Page int, Limit int) ([]materi.Materi, int, error) {
 
-	limit := 3
+	limit := Limit
 	offset := (Page - 1) * limit
 
 	var sqlStatement string
@@ -73,7 +73,7 @@ func (h *Repository) FindMateriByPage(Page int) ([]materi.Materi, int, error) {
 
 func (h *Repository) FindMateriByFilter(materiFilterRequest materi.MateriFilterRequest) ([]materi.Materi, int, error) {
 	
-	limit := 3
+	limit := materiFilterRequest.Limit
 	offset := (materiFilterRequest.Page - 1) * limit
 	
 	var sqlStatement string
