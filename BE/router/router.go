@@ -27,7 +27,7 @@ func Setuprouter(Handler *handler.Handler) *gin.Engine {
 	r.POST("/register", Handler.CreateUser)
 	r.POST("/login", Handler.Login)
 	
-	// r.Use(Handler.CheckUser)
+	r.Use(Handler.CheckUser)
 	{
 		r.GET("/user",  Handler.GetCredentialUser)
 
@@ -42,7 +42,7 @@ func Setuprouter(Handler *handler.Handler) *gin.Engine {
 		r.GET("/test/count",Handler.GetCountTest)
 	}	
 
-	// r.Use(Handler.CheckAdmin)
+	r.Use(Handler.CheckAdmin)
 	{
 		r.POST("/materi",Handler.CreateMateri)
 		r.POST("/materi/update",Handler.UpdateMateri)
