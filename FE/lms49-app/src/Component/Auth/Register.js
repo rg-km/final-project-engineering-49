@@ -5,20 +5,21 @@ function Register() {
   return (
     <div className="register">
       <div className="registerForm">
-        <div className="container">
+        <div className="containerRegister">
           <h1>Register</h1>
           <form>
             <label>Email</label>
-            <input type="email" name="email" placeholder="Masukkan Email..." />
+            <input type="email" name="email" placeholder="Masukkan Email..." required/>
 
             <label>Username</label>
-            <input type="text" name="username" placeholder="Masukkan Nama..." />
+            <input type="text" name="username" placeholder="Masukkan Nama..." required/>
 
             <label>Password</label>
             <input
               type="password"
               name="password"
               placeholder="Masukkan Password..."
+              required
             />
 
             <label>Retype Password</label>
@@ -26,9 +27,13 @@ function Register() {
               type="password"
               name="repassword"
               placeholder="Ketik Ulang Password..."
+              required
             />
 
-            <button type="submit">Register</button>
+            <div className="buttonRegister">
+              <button type="submit">Register</button>
+            </div>
+            
           </form>
         </div>
       </div>

@@ -6,21 +6,23 @@ function Login() {
   return (
     <div className="login">
       <div className="loginForm">
-        <div className="container">
+        <div className="containerLogin">
           <h1>Login</h1>
           <form>
             <label>Email</label>
 
-            <input type="email" name="email" placeholder="Masukkan Email..." />
+            <input type="email" name="email" placeholder="Masukkan Email..." required/>
             <label>Password</label>
 
             <input
               type="password"
               name="password"
               placeholder="Masukkan Password..."
+              required
             />
-
-            <button type="submit">Login</button>
+            <div className="buttonLogin">
+              <button type="submit">Login</button>
+            </div>
           </form>
 
           <a href="/">
