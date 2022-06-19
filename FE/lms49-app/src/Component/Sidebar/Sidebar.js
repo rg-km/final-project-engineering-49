@@ -1,10 +1,13 @@
 import React from "react";
-import ".Style/Sidebar.css";
+import "./Style/Sidebar.css";
 
-function Sidebar() {
+const Sidebar = () => {
     return (
         <div className="sidebar">
-            <h1>Ini Sidebar</h1>
+            
+            <li>Home</li>
+            <li>Dasboard</li>
+            <li>Courses</li>
         </div>
     )
 }
