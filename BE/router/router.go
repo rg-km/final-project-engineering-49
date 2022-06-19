@@ -30,11 +30,13 @@ func Setuprouter(Handler *handler.Handler) *gin.Engine {
 	r.Use(Handler.CheckUser)
 	{
 		r.GET("/user",  Handler.GetCredentialUser)
+
 		r.GET("/materi",Handler.GetAllMateri)
 		r.GET("/materi/id/:id",Handler.GetMateriByID)
 		r.GET("/materi/:page/:limit",Handler.GetMateriByPage)
 		r.GET("/materi/filter/:page/:limit",Handler.GetMateriByFilter)
 		r.GET("/materi/count",Handler.GetCountMateri)
+
 		r.GET("/test/materi/:id",Handler.GetTestByMateri)
 		r.POST("/test/submit",Handler.SubmitTest)
 		r.GET("/test/count",Handler.GetCountTest)
@@ -45,6 +47,7 @@ func Setuprouter(Handler *handler.Handler) *gin.Engine {
 		r.POST("/materi",Handler.CreateMateri)
 		r.POST("/materi/update",Handler.UpdateMateri)
 		r.DELETE("/materi/delete/:id",Handler.DeleteMateri)
+
 		r.POST("/test",Handler.CreateTest)
 		r.DELETE("/test/delete/:id",Handler.DeleteTest)
 	}

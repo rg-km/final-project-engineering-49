@@ -1,8 +1,7 @@
 package log
 
 type LogRequest struct {
-	ID       int
-	MateriID int `binding:"required"`
-	Answers  []string
-	TestID   []int
+	MateriID int      `json:"materi_id" binding:"required"`
+	Answers  []string `json:"answers" binding:"required"`
+	TestID   []int    `json:"test_id" binding:"required"`
 }
