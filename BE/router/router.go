@@ -25,6 +25,7 @@ func Setuprouter(Handler *handler.Handler) *gin.Engine {
 
 	//nothing authorization
 	r.POST("/register", Handler.CreateUser)
+	// r.POST("/register", Handler.CreateAdmin)
 	r.POST("/login", Handler.Login)
 	
 	r.Use(Handler.CheckUser)
