@@ -4,6 +4,7 @@ import (
 	"belajar-golang/helper"
 	"belajar-golang/model/user"
 	"net/http"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 )
@@ -93,9 +94,11 @@ func (h *Handler) CreateUser(c *gin.Context) {
 
 func (h *Handler) GetCredentialUser(c *gin.Context) {
 
-	tknStr := c.Request.Header["Token"]
+	tknStr := c.Request.Header["Authorization"]
+	tknArr := strings.Split(tknStr[0]," ")
+	fixTkn := tknArr[1]
 
-	user, err := h.repo.GetUserByToken(tknStr)
+	user, err := h.repo.GetUserByToken(fixTkn)
 	if err != nil {
 		c.JSON(http.StatusForbidden, "Forbidden")
 		return

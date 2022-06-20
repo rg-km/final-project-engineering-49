@@ -47,10 +47,10 @@ func (h *Repository) CheckEmailIsExist(email string) bool{
 	return true
 }
 
-func (h *Repository) GetUserByToken(token []string) (user.User, error){
+func (h *Repository) GetUserByToken(token string) (user.User, error){
 	claims := &Claims{}
 	var jwtKey = []byte("key")
-	jwt.ParseWithClaims(token[0], claims, func(token *jwt.Token) (interface{}, error) {
+	jwt.ParseWithClaims(token, claims, func(token *jwt.Token) (interface{}, error) {
 		return jwtKey, nil
 	})
 
