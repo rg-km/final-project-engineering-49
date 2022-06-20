@@ -5,9 +5,7 @@ import ReactPlayer from 'react-player';
 function VideoJS() {
     return (
         <div className='videoo'>
-            
-                <ReactPlayer url='https://www.youtube.com/watch?v=Ke90Tje7VS0' controls={true}/>
-            
+                <ReactPlayer url='https://www.youtube.com/watch?v=kUMe1FH4CHE' controls={true}/>
         </div>
     );
 }
