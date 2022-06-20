@@ -32,7 +32,7 @@ body {
     transition: all .5s;
 }
 
-.container {
+.containerRegister {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -45,23 +45,24 @@ body {
     background-color: var(--form-bg);
 }
 
-span {
+.containerRegister span {
     padding: 0 10px;
     background-color: var(--form-bg);
 }
 
-form {
+.containerRegister form {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-label {
-    margin: 8px 0;
+.containerRegister label {
+    margin-top: 15px;
+    margin-bottom: 8px;
     font-weight: 600;
 }
 
-input {
+.containerRegister input {
     padding: 8px;
     margin-bottom: 8px;
     border-radius: 30px;
@@ -70,7 +71,15 @@ input {
     color: var(--text-primary);
 }
 
-button {
+.buttonRegister {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.containerRegister button {
+    width: 120px;
     background-color: #000;
     border: 1px solid #000;
     color: #F9B234;

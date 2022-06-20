@@ -30,6 +30,7 @@ func Setuprouter(Handler *handler.Handler) *gin.Engine {
 	r.Use(Handler.CheckUser)
 	{
 		r.GET("/user",  Handler.GetCredentialUser)
+		r.GET("/user/count", Handler.GetCountStudent)
 
 		r.GET("/materi",Handler.GetAllMateri)
 		r.GET("/materi/id/:id",Handler.GetMateriByID)

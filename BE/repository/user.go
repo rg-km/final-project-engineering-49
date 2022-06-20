@@ -14,6 +14,15 @@ type Claims struct {
 	jwt.StandardClaims
 }
 
+func (h *Repository) GetCountStudent()(int,error){
+	var count int
+	err := h.db.QueryRow("SELECT COUNT(*) FROM users WHERE role = 'student' ").Scan(&count)
+	if err != nil {
+		return 0,err
+	}
+	return count, nil
+}
+
 func (h *Repository) Login(login user.Login) (user.User, error){
 	sqlStatement := `SELECT id,name,role,email,password 
 	FROM users WHERE email = ?`
