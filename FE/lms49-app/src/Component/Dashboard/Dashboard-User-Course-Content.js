@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "../Navbar/Navbar";
 import "./Style/Dashboard-User-Course-Content.css";
 import VideoJS from "./VideoJS";
 
@@ -6,6 +7,7 @@ import VideoJS from "./VideoJS";
 const CourseContent = () => {
     return (
         <div>
+            <Navbar/>
             <h1>HTML</h1>
             <VideoJS/>
             <p className="text">
