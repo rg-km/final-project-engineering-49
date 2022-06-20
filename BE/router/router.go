@@ -32,22 +32,22 @@ func Setuprouter(Handler *handler.Handler) *gin.Engine {
 		r.GET("/user",  Handler.GetCredentialUser)
 		r.GET("/user/count", Handler.GetCountStudent)
 
-		r.GET("/materi",Handler.GetAllMateri)
-		r.GET("/materi/id/:id",Handler.GetMateriByID)
-		r.GET("/materi/:page/:limit",Handler.GetMateriByPage)
-		r.GET("/materi/filter/:page/:limit",Handler.GetMateriByFilter)
-		r.GET("/materi/count",Handler.GetCountMateri)
+		r.GET("/courses",Handler.GetAllMateri)
+		r.GET("/course/id/:id",Handler.GetMateriByID)
+		r.GET("/course/:page/:limit",Handler.GetMateriByPage)
+		r.GET("/course/filter/:page/:limit",Handler.GetMateriByFilter)
+		r.GET("/course/count",Handler.GetCountMateri)
 
-		r.GET("/test/materi/:id",Handler.GetTestByMateri)
+		r.GET("/test/course/:id",Handler.GetTestByMateri)
 		r.POST("/test/submit",Handler.SubmitTest)
 		r.GET("/test/count",Handler.GetCountTest)
 	}	
 
 	r.Use(Handler.CheckAdmin)
 	{
-		r.POST("/materi",Handler.CreateMateri)
-		r.POST("/materi/update",Handler.UpdateMateri)
-		r.DELETE("/materi/delete/:id",Handler.DeleteMateri)
+		r.POST("/course",Handler.CreateMateri)
+		r.POST("/course/update",Handler.UpdateMateri)
+		r.DELETE("/course/delete/:id",Handler.DeleteMateri)
 
 		r.POST("/test",Handler.CreateTest)
 		r.DELETE("/test/delete/:id",Handler.DeleteTest)
