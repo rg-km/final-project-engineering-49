@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.App {
+    height: 100vh;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
