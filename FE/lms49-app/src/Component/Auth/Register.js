@@ -36,6 +36,7 @@ function Register() {
       })
       .catch(err => {
         setMessage(err.message);
+        setMessage("Register Failed!");
       })
   }
 
