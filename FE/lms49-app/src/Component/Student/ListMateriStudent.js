@@ -1,5 +1,5 @@
 import React from "react";
-import ".Style/ListMateriStudent.css";
+import "./Style/ListMateriStudent.css";
 
 function ListMateriStudent() {
     return (

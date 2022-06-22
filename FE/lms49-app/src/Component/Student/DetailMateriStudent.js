@@ -1,5 +1,5 @@
 import React from "react";
-import ".Style/DetailMateriStudent.css";
+import "./Style/DetailMateriStudent.css";
 
 function DetailMateriStudent() {
     return (
