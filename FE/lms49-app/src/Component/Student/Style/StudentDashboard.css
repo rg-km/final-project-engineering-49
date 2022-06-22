@@ -40,6 +40,12 @@
 }
 
 .BoxMessage {
-    background-color: aqua;
-    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    background-color: #171717;
+    padding: 15px;
+    margin-top: 30px;
+    color: #F9B234;
+    border-radius: 15px;
+    border: 1px #F9B234 solid;
 }

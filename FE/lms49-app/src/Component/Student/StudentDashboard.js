@@ -23,7 +23,8 @@ function StudentDashboard() {
             <img className="logoCourse" src={Course}/>
           </div>
           <div className="BoxMessage">
-            <h1>Box Pesan</h1>
+            <h3>Selamat Datang Mahasiswa!</h3>
+            <h5>Di web ini kalian dapat menyaksikan materi dalam bentuk Video</h5>
           </div>
         </div>
       </div>
