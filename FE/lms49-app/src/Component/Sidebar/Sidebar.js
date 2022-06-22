@@ -16,7 +16,7 @@ function Sidebar() {
             <div className="sidebar">
                 <Link to="/" className="side-menu-icon" onClick={showSidebar}>
                     <FaIcons.FaBars />
-                </Link>
+                 </Link>
             </div>
             <div 
                 className={sidebar ? "sidebar-container active": "sidebar-container"}

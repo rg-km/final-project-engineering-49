@@ -1,5 +1,4 @@
 .Sidebar {
-    background-color: #323232;
     height: 8vh;
     display: flex;
     justify-content: flex-start;
@@ -71,3 +70,4 @@
 .span {
     padding-left: 1rem;
 }
+
