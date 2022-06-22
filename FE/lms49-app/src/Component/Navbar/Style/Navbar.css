@@ -5,6 +5,7 @@
 .containerNavbar {
     display: flex;
     justify-content: flex-end;
+    background-color: #2C2A2A;
 }
 
 .navbar {
