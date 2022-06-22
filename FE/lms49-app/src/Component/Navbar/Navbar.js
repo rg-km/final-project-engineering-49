@@ -13,7 +13,7 @@ function Navbar() {
 
     return (
       <div className="containerNavbar">
-        <div className="navbar fixed-top">
+        <div className="navbar">
           <div className="dateNavbar">
             <h3>
               {" "}
