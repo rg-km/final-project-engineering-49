@@ -17,11 +17,10 @@ export default function App() {
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<CourseContent />} />
           <Route path="/register" element={<Register />} />
           <Route path="/logout" element={<Logout />} />
-          <Route path="/studentdash" element={<StudentDashboard />} />
-          <Route path="ListMateriStudent" element={<ListMateriStudent />} />
+          <Route path="/" element={<StudentDashboard />} />
+          <Route path="/listmaterisiswa" element={<ListMateriStudent />} />
         </Routes>
       </Router>
     );

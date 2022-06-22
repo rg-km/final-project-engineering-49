@@ -27,7 +27,7 @@ function Register() {
       email: email,
       name: name,
       password: password,
-      confirmPassword: confirmPassword
+      confirm_password: confirmPassword,
     }
 
     axios.post("http://localhost:8080/register", user)
@@ -35,7 +35,6 @@ function Register() {
         navigate("/login");
       })
       .catch(err => {
-        setMessage(err.message);
         setMessage("Register Failed!");
       })
   }
