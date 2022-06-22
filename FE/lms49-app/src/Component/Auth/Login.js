@@ -35,6 +35,7 @@ function Login() {
     })
     .catch(err => {
       setMessage(err.message);
+      setMessage("Login Failed!");
     })
 
   }

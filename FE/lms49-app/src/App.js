@@ -7,6 +7,8 @@ import StudentDashboard from "./Component/Student/StudentDashboard";
 import Sidebar from "./Component/Sidebar/Sidebar";
 import Footer from "./Component/Footer/Footer";
 import ListMateriAdmin from "./Component/Admin/ListMateriAdmin";
+import Logout from "./Component/Auth/Logout";
+import ListMateriStudent from "./Component/Student/ListMateriStudent";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -17,7 +19,9 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<CourseContent />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/studentdash" element={<StudentDashboard />} />
+          <Route path="ListMateriStudent" element={<ListMateriStudent />} />
         </Routes>
       </Router>
     );

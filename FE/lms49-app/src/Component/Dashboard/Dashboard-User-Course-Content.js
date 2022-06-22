@@ -1,32 +1,52 @@
+import axios from "axios";
 import React from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import "./Style/Dashboard-User-Course-Content.css";
 import VideoJS from "./VideoJS";
 
 
 const CourseContent = () => {
+
+    const [message, setMessage] = useState("");
+    const [token, setToken] = useState("");
+    const [materiId, setMateriId] = useState(0);
+    const [title, setTitle] = useState("");
+    const [contain, setContain] = useState("");
+    const params = useParams();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        navigate("/login");
+      }
+      setToken(token);
+      setMateriId(params.id);
+
+      axios
+        .get("http://localhost:8080/course" + params.id, {
+          headers: { Token: token },
+        })
+        .then((res) => {
+          const response = res.data;
+          setTitle(response.Title);
+          setContain(response.Contain);
+        })
+        .catch((err) => {
+          setMessage(err.message);
+        });
+    }, []);
+
+    
     return (
       <div className="courseContent">
         <Navbar />
-        <h1>HTML</h1>
+        <h1>{title}</h1>
         <VideoJS />
-        <p className="textDes">
-          Aliquip enim cillum qui dolore veniam. Quis aute reprehenderit est
-          adipisicing aute tempor. Pariatur occaecat dolor labore sint magna.
-          Magna enim qui ea proident.
-        </p>
-        <p className="textDes">
-          Est esse labore cupidatat pariatur exercitation labore ipsum culpa sit
-          cillum consectetur consectetur duis est. Sit aliqua dolor cillum
-          exercitation sit minim. Laborum incididunt qui minim quis cupidatat
-          exercitation cillum non reprehenderit dolore. Incididunt esse id
-          aliquip ex ipsum eiusmod fugiat enim.
-        </p>
-        <p className="textDes">
-          Duis laborum est consequat incididunt ut. Qui ullamco ullamco aliqua
-          est ullamco nisi aliqua. Minim cillum amet sit minim mollit consequat
-          dolor velit do labore. Ullamco minim tempor irure id id in.
-        </p>
+        <p className="textDes">{contain}</p>
       </div>
     );
 }
