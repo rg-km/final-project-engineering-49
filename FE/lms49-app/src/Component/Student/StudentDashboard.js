@@ -6,13 +6,10 @@ import Footer from "../Footer/Footer";
 
 function StudentDashboard() {
     return (
-        <div className="studentDashboard">
-            <Navbar />
-            <div className="containerStudentDash">
-                
-            </div>
-        </div>
-    )
+      <div className="studentDashboard">
+        
+      </div>
+    );
 }
 
 export default StudentDashboard;
