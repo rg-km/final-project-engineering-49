@@ -1,14 +1,45 @@
 .studentDashboard {
     background-color: #2C2A2A;
+    width: 100%;
+    height: 100vh;
 }
 
-.container .content .cards .card {
-    width: 250px;
-    height: 150px;
-    background-color: #171717;
-    margin: 20px 10px;
+.BoxContainer {
     display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 36px;
+}
+
+.HeaderDashPage h1 {
+    color: #F9B234;
+}
+
+.BoxStatCount {
+    display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-around;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #171717;
+    padding: 15px;
+    margin-top: 30px;
+    border-radius: 15px;
+    border: 1px #F9B234 solid;
+}
+
+.textStat {
+    color: #F9B234;
+    display: flex;
+    flex-direction: column;
+    margin-right: 45px;
+}
+
+.logoCourse {
+    width: 50px;
+    height: 50px;
+}
+
+.BoxMessage {
+    background-color: aqua;
+    margin-top: 50px;
 }
