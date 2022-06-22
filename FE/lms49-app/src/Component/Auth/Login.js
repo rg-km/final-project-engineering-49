@@ -30,11 +30,10 @@ function Login() {
     .post("http://localhost:8080/login", user)
     .then(res => {
       const response = res.data
-      localStorage.setItem("token", response.token);
+      localStorage.setItem("token", response.data.token);
       navigate("/");
     })
     .catch(err => {
-      setMessage(err.message);
       setMessage("Login Failed!");
     })
 
