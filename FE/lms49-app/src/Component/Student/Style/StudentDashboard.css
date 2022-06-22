@@ -1,0 +1,14 @@
+.studentDashboard {
+    background-color: #2C2A2A;
+}
+
+.container .content .cards .card {
+    width: 250px;
+    height: 150px;
+    background-color: #171717;
+    margin: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
