@@ -27,7 +27,7 @@ function Login() {
     }
 
     axios
-    .post("http://localhost:8000/login", user)
+    .post("http://localhost:8080/login", user)
     .then(res => {
       const response = res.data
       localStorage.setItem("token", response.token);

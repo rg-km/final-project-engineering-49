@@ -1,10 +1,16 @@
 import React from "react";
-import ".Style/StudentDashboard.css";
+import "./Style/StudentDashboard.css";
+import Navbar from "../Navbar/Navbar";
+import Sidebar from "../Sidebar/Sidebar";
+import Footer from "../Footer/Footer";
 
 function StudentDashboard() {
     return (
         <div className="studentDashboard">
-            <h1>Ini Student Dashboard</h1>
+            <Navbar />
+            <div className="containerStudentDash">
+                
+            </div>
         </div>
     )
 }

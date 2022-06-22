@@ -25,15 +25,7 @@ function Navbar() {
             </h3>
           </div>
 
-          <div className="searchBar">
-            <input type="text" placeholder="search something..." />
-            <div className="iconSearch">
-              <img src={SearchIcon} alt="search" />
-            </div>
-          </div>
-
           <div className="profileNavbar">
-            <h4>User 1</h4>
             <a href="#">
               <img src={UserIcon} alt="Avatar" className="avatarNavbar" />
             </a>

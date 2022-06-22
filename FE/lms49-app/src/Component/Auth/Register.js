@@ -30,7 +30,7 @@ function Register() {
       confirmPassword: confirmPassword
     }
 
-    axios.post("http://localhost:8000/register", user)
+    axios.post("http://localhost:8080/register", user)
       .then((res) => {
         navigate("/login");
       })
