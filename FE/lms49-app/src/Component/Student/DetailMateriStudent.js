@@ -6,7 +6,6 @@ import { useParams } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import "./Style/DetailMateriStudent.css";
 import ReactPlayer from 'react-player';
-import Sidebar from "../Sidebar/Sidebar";
 
 
 const DetailMateriStudent = () => {
@@ -26,17 +25,31 @@ const DetailMateriStudent = () => {
             navigate("/login");
         }
         setToken(token);
+
+        axios
+            .get("http://localhost:8080/course/" + params.id, {
+                headers: { Authorization: `Bearer ${token}` },
+            })
+            .then((res) => {
+                const response = res.data;
+                setTitle(response.title);
+                setContain(response.contain);
+                setLink(response.link);
+            })
+            .catch((err) => {
+                setMessage(err.message);
+            })
     }, []);
     
     return (
       <div className="courseContent">
         <Navbar />
-        <Sidebar />
-        <h1>KA</h1>
-        <div className='videoo'>
-                <ReactPlayer url='https://www.youtube.com/watch?v=kUMe1FH4CHE' controls={true}/>
+        <h5>{message}</h5>
+        <h1>{title}</h1>
+        <div className="videoo">
+          <ReactPlayer url={link} controls={true} />
         </div>
-        <p className="textDes">test</p>
+        <p className="textDes">{contain}</p>
       </div>
     );
 }
