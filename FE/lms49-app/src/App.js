@@ -9,7 +9,7 @@ import Footer from "./Component/Footer/Footer";
 import ListMateriAdmin from "./Component/Admin/ListMateriAdmin";
 import Logout from "./Component/Auth/Logout";
 import ListMateriStudent from "./Component/Student/ListMateriStudent";
-
+import DetailMateriStudent from "./Component/Student/DetailMateriStudent";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export default function App() {
@@ -21,6 +21,8 @@ export default function App() {
           <Route path="/logout" element={<Logout />} />
           <Route path="/" element={<StudentDashboard />} />
           <Route path="/listmaterisiswa" element={<ListMateriStudent />} />
+          <Route path="/detailmateri" element={<DetailMateriStudent />} />
+          <Route path="/content" element={<CourseContent />} />
         </Routes>
       </Router>
     );
