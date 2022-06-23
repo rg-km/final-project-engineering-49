@@ -11,10 +11,13 @@
   
   .button {
     background-color: orange;
-    padding: 10px;
+    font-size: small;
+    font-weight: bold;
+    color: rgb(43, 42, 41);
+    /*padding: 10px;
     border-radius: 20px;
     width: 130px;
-    border-width: 0ch;
+    border-width: 0ch;*/
   }
   
   .textPage {
@@ -88,18 +91,26 @@
   }
   
   .button1 {
-    height: 22px;
+    /*height: 22px;
     width: 22px;
     border-radius: 50px;
     border-color: orange;
     background-color: #000;
-    border-width: 1.5px;
+    border-width: 1.5px;*/
+    background-color:orange;
+    font-size: small;
+    font-weight: bold;
+    color: rgb(37, 37, 36);
   }
   .button2 {
-    height: 22px;
+    /*height: 22px;
     width: 22px;
     border-radius: 50px;
     border-color: orange;
     background-color: #000;
-    border-width: 1.5px;
+    border-width: 1.5px;*/
+    background-color:orange;
+    font-size: small;
+    font-weight: bold;
+    color: rgb(26, 25, 25);
   }

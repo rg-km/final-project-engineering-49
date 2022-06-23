@@ -75,7 +75,7 @@ function ListMateriStudent() {
                     >
                       Detail Materi
                     </button>
-                    {/* <button className="button2"></button> */}
+                    <button className="button2">Read Now</button> 
                   </div>
                 </div>
               </div>
