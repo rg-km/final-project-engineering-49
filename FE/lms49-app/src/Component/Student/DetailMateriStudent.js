@@ -34,7 +34,7 @@ const DetailMateriStudent = () => {
                 const response = res.data;
                 setTitle(response.data.Title);
                 setContain(response.data.Contain);
-                setLink(response.data.Link);
+                setLink(response.data.FileName);
             })
             .catch((err) => {
                 setMessage(err.message);
