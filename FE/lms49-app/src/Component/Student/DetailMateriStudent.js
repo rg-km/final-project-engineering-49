@@ -27,14 +27,14 @@ const DetailMateriStudent = () => {
         setToken(token);
 
         axios
-            .get("http://localhost:8080/course/" + params.id, {
+            .get("http://localhost:8080/course/id/" + params.id, {
                 headers: { Authorization: `Bearer ${token}` },
             })
             .then((res) => {
                 const response = res.data;
-                setTitle(response.title);
-                setContain(response.contain);
-                setLink(response.link);
+                setTitle(response.data.Title);
+                setContain(response.data.Contain);
+                setLink(response.data.Link);
             })
             .catch((err) => {
                 setMessage(err.message);

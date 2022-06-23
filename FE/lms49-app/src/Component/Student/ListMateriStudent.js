@@ -37,7 +37,7 @@ function ListMateriStudent() {
     })
     .then((res) => {
       const response = res.data;
-      setMateri(response.data.materi);
+      setMateri(response.data.Materi);
     })
     .catch((err) => {
       setMessage(err.message);
@@ -46,7 +46,7 @@ function ListMateriStudent() {
   }, [])
 
   const detailMateri = (id) => {
-    navigate("detailmateri/" + id);
+    navigate("/detailmateri/" + id);
   }
 
     return (
