@@ -49,3 +49,19 @@
     border-radius: 15px;
     border: 1px #F9B234 solid;
 }
+
+.ButtonToList {
+    width:  75px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #171717;
+    border-radius: 1px;
+    border: 1px #F9B234 solid;
+}
+
+.ButtonToList a {
+    color: #F9B234;
+    text-decoration: none;
+}

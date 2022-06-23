@@ -66,6 +66,9 @@ function StudentDashboard() {
             <h3>Selamat Datang Mahasiswa!</h3>
             <h5>Di web ini kalian dapat menyaksikan materi dalam bentuk Video</h5>
           </div>
+          <div className="ButtonToList">
+            <a href="/listmaterisiswa">Lihat Materi</a>
+          </div>
         </div>
       </div>
     );
