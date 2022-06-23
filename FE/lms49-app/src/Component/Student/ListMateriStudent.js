@@ -10,26 +10,98 @@ import Gambar from "../../Assets/couses_1.png";
 
 function ListMateriStudent() {
     return (
-      <div className="listMateriStudent">
-        <div className="ComponentNavbar">
-          <Navbar />
+      <div className="container">
+        <div className="App">
+          <div className="gap">
+            <text className="text">Courses</text>
+          </div>
+          <div>
+            <button className="button">
+              <text className="textButton">Tambah Data</text>
+            </button>
+          </div>
         </div>
-        <div className="courseContainer">
-            <div className="CourseImage">
-                <img src={Gambar} alt="course" />
+        <div className="main">
+          <div className="component">
+            <div className="image">Gambar</div>
+            <div className="footerBox">
+              <div className="title">
+                <text className="subTitle1">HTML</text>
+                <text className="subTitle2">Admin 2</text>
+              </div>
+              <div>
+                <button className="button1"></button>
+                <button className="button2"></button>
+              </div>
             </div>
-            <div className="CourseInfoContainer">
-                <div className="CourseInfoText">
-                    <h5>HTML</h5>
-                    <h6>Admin 2</h6>
-                </div>
-                <div className="CourseInfoButton">
-                    <button>Read Now</button>
-                </div>
+          </div>
+          <div className="component">
+            <div className="image">Gambar</div>
+            <div className="footerBox">
+              <div className="title">
+                <text className="subTitle1">HTML</text>
+                <text className="subTitle2">Admin 2</text>
+              </div>
+              <div>
+                <button className="button1"></button>
+                <button className="button2"></button>
+              </div>
             </div>
+          </div>
+          <div className="component">
+            <div className="image">Gambar</div>
+            <div className="footerBox">
+              <div className="title">
+                <text className="subTitle1">HTML</text>
+                <text className="subTitle2">Admin 2</text>
+              </div>
+              <div>
+                <button className="button1"></button>
+                <button className="button2"></button>
+              </div>
+            </div>
+          </div>
+          <div className="component">
+            <div className="image">Gambar</div>
+            <div className="footerBox">
+              <div className="title">
+                <text className="subTitle1">HTML</text>
+                <text className="subTitle2">Admin 2</text>
+              </div>
+              <div>
+                <button className="button1"></button>
+                <button className="button2"></button>
+              </div>
+            </div>
+          </div>
+          <div className="component">
+            <div className="image">Gambar</div>
+            <div className="footerBox">
+              <div className="title">
+                <text className="subTitle1">HTML</text>
+                <text className="subTitle2">Admin 2</text>
+              </div>
+              <div>
+                <button className="button1"></button>
+                <button className="button2"></button>
+              </div>
+            </div>
+          </div>
+          <div className="component">
+            <div className="image">Gambar</div>
+            <div className="footerBox">
+              <div className="title">
+                <text className="subTitle1">HTML</text>
+                <text className="subTitle2">Admin 2</text>
+              </div>
+              <div>
+                <button className="button1"></button>
+                <button className="button2"></button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
-}
-
+  }
 export default ListMateriStudent;
