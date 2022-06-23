@@ -14,7 +14,7 @@ func Setuprouter(Handler *handler.Handler) *gin.Engine {
 	r.Use(cors.New(cors.Config{
         AllowOrigins:     []string{"http://localhost:3000"},
         AllowMethods:     []string{"POST","GET"},
-        AllowHeaders:     []string{"Origin","Token","content-type"},
+        AllowHeaders:     []string{"Origin","Token","Authorization","content-type"},
         ExposeHeaders:    []string{"Content-Length"},
         AllowCredentials: true,
         AllowOriginFunc: func(origin string) bool {
