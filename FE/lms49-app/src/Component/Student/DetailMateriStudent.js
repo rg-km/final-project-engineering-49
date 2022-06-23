@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import "./Style/DetailMateriStudent.css";
 import ReactPlayer from 'react-player';
+import Sidebar from "../Sidebar/Sidebar";
 
 
 const DetailMateriStudent = () => {
@@ -44,6 +45,7 @@ const DetailMateriStudent = () => {
     return (
       <div className="courseContent">
         <Navbar />
+        <Sidebar />
         <h1>KA</h1>
         <div className='videoo'>
                 <ReactPlayer url='https://www.youtube.com/watch?v=kUMe1FH4CHE' controls={true}/>
