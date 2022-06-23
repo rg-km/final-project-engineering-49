@@ -6,51 +6,50 @@ import { useParams } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import "./Style/DetailMateriStudent.css";
 import ReactPlayer from 'react-player';
-import Sidebar from "../Sidebar/Sidebar";
 
 
 const DetailMateriStudent = () => {
 
-    // const [message, setMessage] = useState("");
-    // const [token, setToken] = useState("");
-    // const [materiId, setMateriId] = useState(0);
-    // const [title, setTitle] = useState("");
-    // const [contain, setContain] = useState("");
-    // const params = useParams();
-    // const navigate = useNavigate();
+    const [ message, setMessage ] = useState("");
+    const [ token, setToken ] = useState("");
+    const [ title, setTitle ] = useState("");
+    const [ contain, setContain ] = useState("");
+    const [ link, setLink ] = useState("");
+    const params = useParams();
+    const navigate = useNavigate();
 
-    // useEffect(() => {
-    //   const token = localStorage.getItem("token");
-    //   if (!token) {
-    //     navigate("/login");
-    //   }
-    //   setToken(token);
-    //   setMateriId(params.id);
 
-    //   axios
-    //     .get("http://localhost:8080/course" + params.id, {
-    //       headers: { Token: token },
-    //     })
-    //     .then((res) => {
-    //       const response = res.data;
-    //       setTitle(response.Title);
-    //       setContain(response.Contain);
-    //     })
-    //     .catch((err) => {
-    //       setMessage(err.message);
-    //     });
-    // }, []);
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            navigate("/login");
+        }
+        setToken(token);
 
+        axios
+            .get("http://localhost:8080/course/" + params.id, {
+                headers: { Authorization: `Bearer ${token}` },
+            })
+            .then((res) => {
+                const response = res.data;
+                setTitle(response.title);
+                setContain(response.contain);
+                setLink(response.link);
+            })
+            .catch((err) => {
+                setMessage(err.message);
+            })
+    }, []);
     
     return (
       <div className="courseContent">
         <Navbar />
-        <Sidebar />
-        <h1>KA</h1>
-        <div className='videoo'>
-                <ReactPlayer url='https://www.youtube.com/watch?v=kUMe1FH4CHE' controls={true}/>
+        <h5>{message}</h5>
+        <h1>{title}</h1>
+        <div className="videoo">
+          <ReactPlayer url={link} controls={true} />
         </div>
-        <p className="textDes">test</p>
+        <p className="textDes">{contain}</p>
       </div>
     );
 }
