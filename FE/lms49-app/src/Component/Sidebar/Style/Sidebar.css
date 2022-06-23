@@ -13,6 +13,8 @@ body {
     overflow: hidden;
 }
 .sidebar {
+    display: flex;
+    justify-content: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -24,9 +26,10 @@ body {
 .sidebar .logo_content .logo{
     color: #fff;
     display: flex;
-    height: 50px;
-    width: 100%;
-    align-items: center; 
+    height: 125px;
+    width: 125px;
+    align-items: center;
+    margin-top: 15px;
 }
 .logo_content .logo a{
     float: left;
@@ -42,6 +45,7 @@ body {
     top: 6px;
     font-size: 20px;
     height: 50px;
+    margin-top: 15px;
     width: 50px;
     text-align: center;
     line-height: 50px;

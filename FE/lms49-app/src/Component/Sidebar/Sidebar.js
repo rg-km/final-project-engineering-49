@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Style/Sidebar.css";
 import LogoIcon from "../../Assets/Logo.png";
 import MenuIcon from "../../Assets/menu-regular-24.png";
@@ -14,9 +14,9 @@ function Sidebar() {
             <div className="sidebar">
                <div className="logo_content">
                 <div className="logo">
-                    <a href="#">
+                    {/* <a href="#">
                         <img src={MenuIcon} alt="menu" className="menu"/>    
-                    </a>
+                    </a> */}
                     <img src={LogoIcon} alt="logo" className="logo" />
                 </div>
                     <ul className="nav_list">
