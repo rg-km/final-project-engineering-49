@@ -1,7 +1,7 @@
 import React from "react";
 import "./Style/Navbar.css";
 import { useState, useEffect } from "react";
-import UserIcon from "../../Assets/user_icon.png";
+import logofficon from "../../Assets/logout.png";
 import SearchIcon from "../../Assets/search.png";
 
 function Navbar() {
@@ -26,11 +26,10 @@ function Navbar() {
           </div>
 
           <div className="profileNavbar">
-            <a href="#">
-              <img src={UserIcon} alt="Avatar" className="avatarNavbar" />
+            <a href="/logout">
+              <img src={logofficon} alt="Avatar" className="avatarNavbar" />
             </a>
           </div>
-
         </div>
       </div>
     );

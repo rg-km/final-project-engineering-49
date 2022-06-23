@@ -21,6 +21,7 @@ export default function App() {
           <Route path="/logout" element={<Logout />} />
           <Route path="/" element={<StudentDashboard />} />
           <Route path="/listmaterisiswa" element={<ListMateriStudent />} />
+          <Route path="/navbar" element={<Navbar />} />
         </Routes>
       </Router>
     );
