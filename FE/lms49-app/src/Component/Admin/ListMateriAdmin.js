@@ -5,7 +5,7 @@ import HtmlIcon from "../../Assets/couses_1.png";
 const ListMateriAdmin = props =>{
     return (
         <div className='ListMateriAdmin'>
-            <div className='list'>
+            {/* <div className='list'>
                 <h1 className="cart-id">Courses</h1>
                 <img src={HtmlIcon} alt='courses' className="ListMateriAdmin-img-top" />
             </div>
@@ -18,7 +18,8 @@ const ListMateriAdmin = props =>{
                 Hypertext Markup Language.
                 </p>
                 <a href="#" className="btn btn-primary">Go somewhere</a>
-            </div>
+            </div> */}
+            
         </div>
     )
 }

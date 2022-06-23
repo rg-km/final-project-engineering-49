@@ -10,11 +10,13 @@ import Logout from "./Component/Auth/Logout";
 import ListMateriStudent from "./Component/Student/ListMateriStudent";
 import DetailMateriStudent from "./Component/Student/DetailMateriStudent";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CreateMateri from "./Component/Admin/CreateMateri";
 
 export default function App() {
     return (
       <Router>
         <Routes>
+          <Route path="/CreateMateri" element={<CreateMateri />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/logout" element={<Logout />} />
