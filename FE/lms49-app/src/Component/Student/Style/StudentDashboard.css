@@ -12,6 +12,11 @@
     margin-left: 36px;
 }
 
+.BoxStatContainer {
+    display: flex;
+    flex-direction: row;
+}
+
 .HeaderDashPage h1 {
     color: #F9B234;
 }
@@ -25,6 +30,10 @@
     margin-top: 30px;
     border-radius: 15px;
     border: 1px #F9B234 solid;
+}
+
+.siswaStat {
+    margin-left: 36px;
 }
 
 .textStat {
@@ -51,13 +60,14 @@
 }
 
 .ButtonToList {
-    width:  75px;
+    margin-top: 36px;
+    width:  100px;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #171717;
-    border-radius: 1px;
+    border-radius: 15px;
     border: 1px #F9B234 solid;
 }
 

@@ -7,11 +7,13 @@ import Navbar from "../Navbar/Navbar";
 import Sidebar from "../Sidebar/Sidebar";
 import Footer from "../Footer/Footer";
 import Course from "../../Assets/course.png";
+import StuImg from "../../Assets/siswa.png";
 
 function StudentDashboard() {
 
     const [message, setMessage] = useState("");
     const [countOfMateri, setCountOfMateri] = useState(0);
+    const [countOfStudent, setCountOfStudent] = useState(0);
     const [token, setToken] = useState("");
     const navigate = useNavigate();
 
@@ -42,6 +44,18 @@ function StudentDashboard() {
           .catch((error) => {
             setMessage(error.message);
           });
+        
+        axios
+          .get("http://localhost:8080/user/count", {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then((res) => {
+            const response = res.data;
+            setCountOfStudent(response.data);
+          })
+          .catch((err) => {
+            setMessage(err.message);
+          });
 
     }, [])
 
@@ -55,16 +69,27 @@ function StudentDashboard() {
             <h6>{message}</h6>
             <h1>Dashboard</h1>
           </div>
-          <div className="BoxStatCount">
-            <div className="textStat">
+          <div className="BoxStatContainer">
+            <div className="BoxStatCount">
+              <div className="textStat">
                 <h4>Jumlah Course</h4>
                 <h5>{countOfMateri}</h5>
+              </div>
+              <img className="logoCourse" src={Course} />
             </div>
-            <img className="logoCourse" src={Course}/>
+            <div className="BoxStatCount siswaStat">
+              <div className="textStat">
+                <h4>Jumlah Siswa</h4>
+                <h5>{countOfStudent}</h5>
+              </div>
+              <img className="logoCourse" src={StuImg} />
+            </div>
           </div>
           <div className="BoxMessage">
             <h3>Selamat Datang Mahasiswa!</h3>
-            <h5>Di web ini kalian dapat menyaksikan materi dalam bentuk Video</h5>
+            <h5>
+              Di web ini kalian dapat menyaksikan materi dalam bentuk Video
+            </h5>
           </div>
           <div className="ButtonToList">
             <a href="/listmaterisiswa">Lihat Materi</a>
