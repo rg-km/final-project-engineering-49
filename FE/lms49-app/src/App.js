@@ -1,7 +1,6 @@
 import React from "react";
 import Login from "./Component/Auth/Login";
 import Register from "./Component/Auth/Register";
-import CourseContent from "./Component/Dashboard/Dashboard-User-Course-Content";
 import Navbar from "./Component/Navbar/Navbar";
 import StudentDashboard from "./Component/Student/StudentDashboard";
 import Sidebar from "./Component/Sidebar/Sidebar";
@@ -21,8 +20,7 @@ export default function App() {
           <Route path="/logout" element={<Logout />} />
           <Route path="/" element={<StudentDashboard />} />
           <Route path="/listmaterisiswa" element={<ListMateriStudent />} />
-          <Route path="/detailmateri" element={<DetailMateriStudent />} />
-          <Route path="/content" element={<CourseContent />} />
+          <Route path="/detailmateri/:id" element={<DetailMateriStudent />} />
         </Routes>
       </Router>
     );
