@@ -1,9 +1,12 @@
 import React from "react";
 import "./Style/ListMateriStudent.css";
+import Navbar from "../Navbar/Navbar";
+import Sidebar from "../Sidebar/Sidebar";
 
 function ListMateriStudent() {
     return (
       <div className="container">
+        <Sidebar />
         <div className="App">
           <div className="gap">
             <text className="text">Courses</text>

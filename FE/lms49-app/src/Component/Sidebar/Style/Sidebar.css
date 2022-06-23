@@ -1,73 +1,79 @@
-.Sidebar {
-    height: 8vh;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+/* Google Font Import - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
-
-.side-menu-icon {
-    margin-left: 2rem;
-    font-size: 2rem;
-    color: white;
-    max-height: 2rem;
-    background-color: none;
+body {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
 }
-
-.sidebar-container {
-    background-color: #323232;
-    width: 14rem;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
+.sidebar {
     position: fixed;
     top: 0;
-    left: -100%;
-    transition: 1s;
-}
-
-.sidebar-container.active {
     left: 0;
-    transition: 500ms;
-}
-
-.sidebar-item {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    height: 3rem;
-    list-style: none;
-    padding: 8px 0px 8px 16px;
-}
-
-.sidebar-item a {
-    text-decoration: none;
-    color: orange;
-    font-size: 1rem;
     height: 100%;
-    width: 90%;
+    width: 220px;
+    background-color: #323232;
+    padding: 6px 14px;
+}
+.sidebar .logo_content .logo{
+    color: #fff;
     display: flex;
-    align-items: center;
-    padding: 0 1.5rem;
-    border-radius: 4px;
-}
-
-.sidebar-item a:hover {
-    background-color: rgb(83, 82, 81);    
-}
-
-.sidebar-items {
+    height: 50px;
     width: 100%;
+    align-items: center; 
 }
+.logo_content .logo a{
+    float: left;
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 
-.sidebar-container .sidebar-toggle {
+}
+.sidebar #image{
+    position: center;
+    color: #fff;
+    top: 6px;
+    font-size: 20px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+.sidebar ul{
+    margin-top: 20px;
+}
+.sidebar ul li{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin: 20px;
+    list-style: none;
+    line-height: 50px;
+
+}
+.sidebar ul li a{
+    color:#F9B234;
     display: flex;
-    height: 60px;
-    justify-content: flex-start;
     align-items: center;
-    margin-bottom: 0.7rem;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    border-radius: 12px;
 }
-
-.span {
-    padding-left: 1rem;
+.sidebar ul li a:hover{
+    color:#F9B234;
+    background-color: rgb(189, 174, 174);
 }
-
+.sidebar ul li a img{
+    height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+    text-align: center;
+}
