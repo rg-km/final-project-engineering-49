@@ -1,12 +1,18 @@
 .courseContent {
     background-color: #2C2A2A;
+    height: 100vmax;
 }
 
-.courseContent h1 {
+.courseContent-body {
+    margin-left: 350px;
+    margin-top: 36px;
+}
+
+.courseContent-body h2 {
     font-size: 32px;
     font-weight: 500;
     color: #F9B234;
-    padding: 25px 24px;
+    /* padding: 25px 24px; */
 }
 
 .courseContent body {
@@ -20,6 +26,8 @@
     display: flex;
     justify-content: center;
     border-radius: 30px;
+    margin-top: 36px;
+    margin-bottom: 36px;
 }
 
 .textDes {

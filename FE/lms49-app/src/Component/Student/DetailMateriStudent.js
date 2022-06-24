@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
+import Sidebar from "../Sidebar/Sidebar";
+import Footer from "../Footer/Footer";
 import "./Style/DetailMateriStudent.css";
 import ReactPlayer from 'react-player';
 
@@ -43,13 +45,23 @@ const DetailMateriStudent = () => {
     
     return (
       <div className="courseContent">
-        <Navbar />
-        <h5>{message}</h5>
-        <h1>{title}</h1>
-        <div className="videoo">
-          <ReactPlayer url={link} controls={true} />
+        <div>
+          <Navbar />
         </div>
-        <p className="textDes">{contain}</p>
+        <div>
+          <Sidebar />
+        </div>
+        <div className="courseContent-body">
+          <h5>{message}</h5>
+          <h2>{title}</h2>
+          <div className="videoo">
+            <ReactPlayer url={link} controls={true} />
+          </div>
+          <p className="textDes">{contain}</p>
+        </div>
+        <div className="FooterComponentDetailPage">
+          <Footer />
+        </div>
       </div>
     );
 }
