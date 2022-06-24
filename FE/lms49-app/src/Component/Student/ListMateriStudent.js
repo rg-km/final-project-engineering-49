@@ -1,5 +1,8 @@
 import React from "react";
+import Navbar from "../Navbar/Navbar"
 import "./Style/ListMateriStudent.css";
+
+//const ListMateriStudent = () => {
 
 function ListMateriStudent() {
     return (
@@ -23,8 +26,7 @@ function ListMateriStudent() {
                 <text className="subTitle2">Admin 2</text>
               </div>
               <div>
-                <button className="button1"></button>
-                <button className="button2"></button>
+                <button className="button1">Read Now</button>
               </div>
             </div>
           </div>
@@ -36,8 +38,7 @@ function ListMateriStudent() {
                 <text className="subTitle2">Admin 2</text>
               </div>
               <div>
-                <button className="button1"></button>
-                <button className="button2"></button>
+                <button className="button1">Read Now</button>
               </div>
             </div>
           </div>
@@ -49,8 +50,7 @@ function ListMateriStudent() {
                 <text className="subTitle2">Admin 2</text>
               </div>
               <div>
-                <button className="button1"></button>
-                <button className="button2"></button>
+                <button className="button1">Read Now</button>
               </div>
             </div>
           </div>
@@ -62,8 +62,7 @@ function ListMateriStudent() {
                 <text className="subTitle2">Admin 2</text>
               </div>
               <div>
-                <button className="button1"></button>
-                <button className="button2"></button>
+                <button className="button2">Read Now</button>
               </div>
             </div>
           </div>
@@ -75,8 +74,7 @@ function ListMateriStudent() {
                 <text className="subTitle2">Admin 2</text>
               </div>
               <div>
-                <button className="button1"></button>
-                <button className="button2"></button>
+                <button className="button1">Read Now</button>
               </div>
             </div>
           </div>
@@ -88,8 +86,7 @@ function ListMateriStudent() {
                 <text className="subTitle2">Admin 2</text>
               </div>
               <div>
-                <button className="button1"></button>
-                <button className="button2"></button>
+                <button className="button2">Read Now</button>
               </div>
             </div>
           </div>
@@ -97,4 +94,5 @@ function ListMateriStudent() {
       </div>
     );
   }
+  
 export default ListMateriStudent;
