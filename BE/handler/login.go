@@ -26,7 +26,6 @@ func (h *Handler) Login(c *gin.Context) {
 			"status":  400,
 		})
 		return
-<<<<<<< HEAD
 	}
 
 	userFound, err := h.repo.Login(loginRequest)
@@ -35,19 +34,6 @@ func (h *Handler) Login(c *gin.Context) {
 			"message": "user not found",
 			"status":  400,
 		})
-=======
-	} 
- 
-	userFound, err := h.repo.Login(loginRequest)
-	if err  != nil {
-		c.JSON(http.StatusBadRequest,err.Error())
-		return 
-	}
-
-	match := helper.CheckPasswordHash(loginRequest.Password, userFound.Password)	
-	if (!match){
-		c.JSON(http.StatusBadRequest,"Password anda salah")
->>>>>>> e8264e0d0d745420d12bec1f4858e2d7f8a313de
 		return
 	}
 
@@ -62,13 +48,8 @@ func (h *Handler) Login(c *gin.Context) {
 
 	expirationTime := time.Now().Add(60 * time.Minute)
 	claims := &Claims{
-<<<<<<< HEAD
 		Email: userFound.Email,
 		Role:  userFound.Role,
-=======
-		Email: userFound.Email, 
-		Role: userFound.Role,
->>>>>>> e8264e0d0d745420d12bec1f4858e2d7f8a313de
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expirationTime.Unix(),
 		},
@@ -85,7 +66,6 @@ func (h *Handler) Login(c *gin.Context) {
 	}
 
 	data := user.LoginResponse{
-<<<<<<< HEAD
 		Name:  userFound.Name,
 		Email: userFound.Email,
 		Token: tokenString,
@@ -95,17 +75,6 @@ func (h *Handler) Login(c *gin.Context) {
 		"message": "Successfully",
 		"status":  200,
 		"data":    data,
-=======
-		Name: userFound.Name,
-		Email: userFound.Email,
-		Token : tokenString,
-	}
-
-	c.JSON(http.StatusOK, gin.H{
-		"message" : "Successfully",
-		"status" : 200,
-		"data" : data,
->>>>>>> e8264e0d0d745420d12bec1f4858e2d7f8a313de
 	})
 	return
 }

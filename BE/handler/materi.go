@@ -2,17 +2,12 @@ package handler
 
 import (
 	"belajar-golang/model/materi"
-<<<<<<< HEAD
-=======
-	"fmt"
->>>>>>> e8264e0d0d745420d12bec1f4858e2d7f8a313de
 	"net/http"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
 
-<<<<<<< HEAD
 func (h Handler) GetAllMateri(c *gin.Context) {
 
 	materis, count, err := h.repo.FindAllMateri()
@@ -21,14 +16,6 @@ func (h Handler) GetAllMateri(c *gin.Context) {
 			"message": err.Error(),
 			"status":  400,
 		})
-=======
-
-func (h Handler) GetAllMateri(c *gin.Context){
-
-	materis,count,err := h.repo.FindAllMateri()
-	if err != nil {
-		c.JSON(http.StatusBadRequest,err.Error())
->>>>>>> e8264e0d0d745420d12bec1f4858e2d7f8a313de
 		return
 	}
  
@@ -37,22 +24,10 @@ func (h Handler) GetAllMateri(c *gin.Context){
 		Count: count,
 	}
 
-<<<<<<< HEAD
-	data := materi.MateriResponse{
-		Materi: materis,
-		Count:  count,
-	}
-
 	c.JSON(http.StatusOK, gin.H{
 		"message": "Successfully",
 		"status":  200,
 		"data":    data,
-=======
-	c.JSON(http.StatusOK, gin.H{
-		"message" : "Successfully",
-		"status" : 200,
-		"data" : data,
->>>>>>> e8264e0d0d745420d12bec1f4858e2d7f8a313de
 	})
 }
 
@@ -60,13 +35,8 @@ func (h *Handler) GetMateriByPage(c *gin.Context) {
 	// TO DO Safa Auliya
 	pageN, _ := strconv.Atoi(c.Param("page"))
 	limitN, _ := strconv.Atoi(c.Param("limit"))
-<<<<<<< HEAD
 
 	materis, count, err := h.repo.FindMateriByPage(pageN, limitN)
-=======
-	
-	materis, count, err := h.repo.FindMateriByPage(pageN,limitN)
->>>>>>> e8264e0d0d745420d12bec1f4858e2d7f8a313de
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"message": err.Error(),
@@ -167,14 +137,10 @@ func (h *Handler) CreateMateri(c *gin.Context) {
 
 	materiCreated, err := h.repo.CreateMateri(materi)
 	if err != nil {
-<<<<<<< HEAD
 		c.JSON(http.StatusBadRequest, gin.H{
 			"message": err.Error(),
 			"status":  400,
 		})
-=======
-		c.JSON(http.StatusBadRequest, err.Error())
->>>>>>> e8264e0d0d745420d12bec1f4858e2d7f8a313de
 		return
 	}
 
@@ -224,14 +190,10 @@ func (h *Handler) UpdateMateri(c *gin.Context) {
 
 	materiUpdated, err := h.repo.UpdateMateri(materi)
 	if err != nil {
-<<<<<<< HEAD
 		c.JSON(http.StatusBadRequest, gin.H{
 			"message": err.Error(),
 			"status":  400,
 		})
-=======
-		c.JSON(http.StatusBadRequest, err.Error())
->>>>>>> e8264e0d0d745420d12bec1f4858e2d7f8a313de
 		return
 	}
 
