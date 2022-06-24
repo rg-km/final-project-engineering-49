@@ -1,7 +1,9 @@
 package handler
 
 import (
+	"fmt"
 	"net/http"
+	"strings"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
@@ -9,19 +11,22 @@ import (
 
 func (h *Handler) CheckUser(c *gin.Context) {
 
-	tknStr := c.Request.Header["Token"]
+	tknStr := c.Request.Header["Authorization"]
+	fmt.Println(tknStr[0])
 	if tknStr == nil {
 		c.AbortWithStatusJSON(http.StatusForbidden,"Forbidden")
 		return
 	}
+	tknArr := strings.Split(tknStr[0]," ")
+	fixTkn := tknArr[1]
 	claims := &Claims{}
 	var jwtKey = []byte("key")
-	tkn, err := jwt.ParseWithClaims(tknStr[0], claims, func(token *jwt.Token) (interface{}, error) {
+	tkn, err := jwt.ParseWithClaims(fixTkn, claims, func(token *jwt.Token) (interface{}, error) {
 		return jwtKey, nil
 	})
 
 	if err != nil {
-		c.AbortWithStatusJSON(http.StatusForbidden,"Forbidden")
+		c.AbortWithStatusJSON(http.StatusForbidden,err.Error())
 		return
 	}
 
@@ -34,19 +39,21 @@ func (h *Handler) CheckUser(c *gin.Context) {
 
 func (h *Handler) CheckAdmin(c *gin.Context) {
 	
-	tknStr := c.Request.Header["Token"]
+	tknStr := c.Request.Header["Authorization"]
 	if tknStr == nil {
 		c.AbortWithStatusJSON(http.StatusForbidden,"Forbidden")
 		return
 	}
+	tknArr := strings.Split(tknStr[0]," ")
+	fixTkn := tknArr[1]
 	claims := &Claims{}
 	var jwtKey = []byte("key")
-	tkn, err := jwt.ParseWithClaims(tknStr[0], claims, func(token *jwt.Token) (interface{}, error) {
+	tkn, err := jwt.ParseWithClaims(fixTkn, claims, func(token *jwt.Token) (interface{}, error) {
 		return jwtKey, nil
 	})
 
 	if err != nil {
-		c.AbortWithStatusJSON(http.StatusForbidden,"Forbidden")
+		c.AbortWithStatusJSON(http.StatusForbidden,err.Error())
 		return
 	}
 
