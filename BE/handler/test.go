@@ -5,6 +5,7 @@ import (
 	"belajar-golang/model/test"
 	"net/http"
 	"strconv"
+	"strings"
 
 	"github.com/gin-gonic/gin"
 )
@@ -80,7 +81,10 @@ func (h *Handler) DeleteTest(c *gin.Context) {
 
 func (h *Handler) SubmitTest(c *gin.Context) {
 	// TO DO
-	user, err := h.repo.GetUserByToken(c.Request.Header["Token"])
+	tknStr := c.Request.Header["Authorization"]
+	tknArr := strings.Split(tknStr[0]," ")
+	fixTkn := tknArr[1]
+	user, err := h.repo.GetUserByToken(fixTkn)
 	if err != nil {
 		c.JSON(http.StatusForbidden, "Forbidden")
 		return
