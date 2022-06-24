@@ -15,32 +15,41 @@ type Claims struct {
 	Role  string `json:"role"`
 	jwt.StandardClaims
 }
- 
-func (h *Handler) Login(c *gin.Context){
+
+func (h *Handler) Login(c *gin.Context) {
 
 	var loginRequest user.Login
 	errReq := c.ShouldBindJSON(&loginRequest)
-	if (errReq != nil) {
-		c.JSON(http.StatusBadRequest,errReq.Error())
+	if errReq != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": errReq.Error(),
+			"status":  400,
+		})
 		return
-	} 
- 
-	user, err := h.repo.Login(loginRequest)
-	if err  != nil {
-		c.JSON(http.StatusBadRequest,err.Error())
-		return 
 	}
 
-	match := helper.CheckPasswordHash(loginRequest.Password, user.Password)	
-	if (!match){
-		c.JSON(http.StatusBadRequest,"Password anda salah")
+	userFound, err := h.repo.Login(loginRequest)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "user not found",
+			"status":  400,
+		})
 		return
 	}
-	
+
+	match := helper.CheckPasswordHash(loginRequest.Password, userFound.Password)
+	if !match {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "password not match!",
+			"status":  400,
+		})
+		return
+	}
+
 	expirationTime := time.Now().Add(60 * time.Minute)
 	claims := &Claims{
-		Email: user.Email, 
-		Role: user.Role,
+		Email: userFound.Email,
+		Role:  userFound.Role,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expirationTime.Unix(),
 		},
@@ -49,14 +58,23 @@ func (h *Handler) Login(c *gin.Context){
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	tokenString, err := token.SignedString(jwtKey)
 	if err != nil {
-		c.JSON(http.StatusBadRequest,errReq.Error())
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": err.Error(),
+			"status":  400,
+		})
 		return
 	}
 
+	data := user.LoginResponse{
+		Name:  userFound.Name,
+		Email: userFound.Email,
+		Token: tokenString,
+	}
+
 	c.JSON(http.StatusOK, gin.H{
-		"message" : "Successfully",
-		"status" : 200,
-		"data" : tokenString,
+		"message": "Successfully",
+		"status":  200,
+		"data":    data,
 	})
-	return	
+	return
 }

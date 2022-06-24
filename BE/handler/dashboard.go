@@ -1,15 +1,57 @@
 package handler
 
-import "github.com/gin-gonic/gin"
+import (
+	"net/http"
 
-func (h *Handler) GetCountOfTest(c *gin.Context) {
-	// TO DO Nashihul Ibad
+	"github.com/gin-gonic/gin"
+)
+
+func (h *Handler) GetCountStudent(c *gin.Context) {
+	count, err := h.repo.GetCountStudent()
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": err.Error(),
+			"status":  400,
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Successfully",
+		"status":  200,
+		"data":    count,
+	})
 }
 
-func (h *Handler) GetCountOfMateri(c *gin.Context) {
-	// TO DO Nashihul Ibad
+func (h *Handler) GetCountMateri(c *gin.Context) {
+	_, count, err := h.repo.FindAllMateri()
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": err.Error(),
+			"status":  400,
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Successfully",
+		"status":  200,
+		"data":    count,
+	})
 }
 
-func (h *Handler) GetCountOfStudent(c *gin.Context){
-	//TO DO Nashihul Ibad
+func (h *Handler) GetCountTest(c *gin.Context) {
+	count, err := h.repo.CountTestGroupByMateri()
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": err.Error(),
+			"status":  400,
+		})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Successfully",
+		"status":  200,
+		"data":    count,
+	})
 }
