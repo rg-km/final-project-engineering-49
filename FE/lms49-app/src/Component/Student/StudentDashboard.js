@@ -11,53 +11,53 @@ import StuImg from "../../Assets/siswa.png";
 
 function StudentDashboard() {
 
-    // const [message, setMessage] = useState("");
-    // const [countOfMateri, setCountOfMateri] = useState(0);
-    // const [countOfStudent, setCountOfStudent] = useState(0);
-    // const [token, setToken] = useState("");
-    // const navigate = useNavigate();
+    const [message, setMessage] = useState("");
+    const [countOfMateri, setCountOfMateri] = useState(0);
+    const [countOfStudent, setCountOfStudent] = useState(0);
+    const [token, setToken] = useState("");
+    const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     const token = localStorage.getItem("token");
-    //     if (!token) {
-    //         navigate("/login");
-    //     }
-    //     setToken(token);
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            navigate("/login");
+        }
+        setToken(token);
 
-    //     axios
-    //     .get("http://localhost:8080/user", {
-    //         headers: { Authorization: `Bearer ${token}` },
-    //     })
-    //     .then((res) => {})
-    //     .catch((error) => {
-    //     navigate("/login");
-    //     });
+        axios
+        .get("http://localhost:8080/user", {
+            headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((res) => {})
+        .catch((error) => {
+        navigate("/login");
+        });
 
-    //     axios
-    //       .get("http://localhost:8080/course/count", {
-    //         headers: { Authorization: `Bearer ${token}` },
-    //       })
-    //       .then((res) => {
-    //         const response = res.data;
-    //         setCountOfMateri(response.data);
-    //       })
-    //       .catch((error) => {
-    //         setMessage(error.message);
-    //       });
+        axios
+          .get("http://localhost:8080/course/count", {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then((res) => {
+            const response = res.data;
+            setCountOfMateri(response.data);
+          })
+          .catch((error) => {
+            setMessage(error.message);
+          });
         
-    //     axios
-    //       .get("http://localhost:8080/user/count", {
-    //         headers: { Authorization: `Bearer ${token}` },
-    //       })
-    //       .then((res) => {
-    //         const response = res.data;
-    //         setCountOfStudent(response.data);
-    //       })
-    //       .catch((err) => {
-    //         setMessage(err.message);
-    //       });
+        axios
+          .get("http://localhost:8080/user/count", {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then((res) => {
+            const response = res.data;
+            setCountOfStudent(response.data);
+          })
+          .catch((err) => {
+            setMessage(err.message);
+          });
 
-    // }, [])
+    }, [])
 
     return (
       <div className="studentDashboard">
@@ -69,23 +69,21 @@ function StudentDashboard() {
         </div>
         <div className="BoxContainer">
           <div className="HeaderDashPage">
-            {/* <h6>{message}</h6> */}
+            <h6>{message}</h6>
             <h2>Dashboard</h2>
           </div>
           <div className="BoxStatContainer">
             <div className="BoxStatCount">
               <div className="textStat">
                 <h4>Jumlah Course</h4>
-                {/* <h5>{countOfMateri}</h5> */}
-                <h5>0</h5>
+                <h5>{countOfMateri}</h5>
               </div>
               <img className="logoCourse" src={Course} />
             </div>
             <div className="BoxStatCount siswaStat">
               <div className="textStat">
                 <h4>Jumlah Siswa</h4>
-                {/* <h5>{countOfStudent}</h5> */}
-                <h5>0</h5>
+                <h5>{countOfStudent}</h5>
               </div>
               <img className="logoSiswa" src={StuImg} />
             </div>
