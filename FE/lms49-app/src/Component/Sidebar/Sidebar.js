@@ -28,14 +28,14 @@ function Sidebar() {
                             {/* <span className="tooltip">Home</span> */}
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/">
                                 <img src={GridIcon} alt="grid" className="grid"/>
-                                <span className="links_name">Admin</span>
+                                <span className="links_name">Dashboard</span>
                             </a>
                             {/* <span className="tooltip">Dashboard</span> */}
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/listmaterisiswa">
                                 <img src={CodeIcon} alt="code" className="code"/>
                                 <span className="links_name">Courses</span>
                             </a>
