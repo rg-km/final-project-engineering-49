@@ -64,10 +64,13 @@ function StudentDashboard() {
         <div className="NavbarComponent">
           <Navbar />
         </div>
+        <div className="SidebarComponent">
+          <Sidebar />
+        </div>
         <div className="BoxContainer">
           <div className="HeaderDashPage">
             <h6>{message}</h6>
-            <h1>Dashboard</h1>
+            <h2>Dashboard</h2>
           </div>
           <div className="BoxStatContainer">
             <div className="BoxStatCount">
@@ -82,18 +85,21 @@ function StudentDashboard() {
                 <h4>Jumlah Siswa</h4>
                 <h5>{countOfStudent}</h5>
               </div>
-              <img className="logoCourse" src={StuImg} />
+              <img className="logoSiswa" src={StuImg} />
             </div>
           </div>
           <div className="BoxMessage">
             <h3>Selamat Datang Mahasiswa!</h3>
-            <h5>
-              Di web ini kalian dapat menyaksikan materi dalam bentuk Video
-            </h5>
+            <p>
+              Di web ini kalian dapat menyaksikan materi dalam bentuk Video yang telah di susun oleh kampus loh!
+            </p>
           </div>
-          <div className="ButtonToList">
+          {/* <div className="ButtonToList">
             <a href="/listmaterisiswa">Lihat Materi</a>
-          </div>
+          </div> */}
+        </div>
+        <div className="FooterComponent">
+          <Footer />
         </div>
       </div>
     );
