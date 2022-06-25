@@ -107,7 +107,12 @@ function ListMateriAdmin() {
 
         <div className="SearchBarComponentAdmin">
           <form onSubmit={search}>
-            <input type="text" placeholder="Your Keyword Please..." value={keyword}/>
+            <input
+              type="text"
+              placeholder="Your Keyword Please..."
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
+            />
             <div className="iconSearchAdmin">
               <button type="submit">Search</button>
             </div>
