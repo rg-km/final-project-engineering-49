@@ -12,6 +12,8 @@ function ListMateriAdmin() {
   const [message, setMessage] = useState("");
   const [token, setToken] = useState("");
   const [materi, setMateri] = useState([]);
+  const [keyword, setKeyword] = useState("");
+  const [page, setPage] = useState(1);
   const navigate = useNavigate();
 
   useEffect (() => {
@@ -63,6 +65,32 @@ function ListMateriAdmin() {
       });
   };
 
+  const search = (e) => {
+    const page = 1;
+    const limit = 10;
+    e.preventDefault();
+    setPage(1);
+    axios
+      .get(
+        "http://localhost:8080/course/filter/" +
+          page +
+          "/" +
+          limit +
+          "?keyword=" +
+          keyword,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((res) => {
+        const response = res.data;
+        setMateri(response.data.Materi);
+      })
+      .catch((error) => {
+        setMessage(error.message);
+      });
+  };
+
   return (
     <div className="container">
       <div className="App">
@@ -76,7 +104,17 @@ function ListMateriAdmin() {
             </button>
           </a>
         </div>
+
+        <div className="SearchBarComponentAdmin">
+          <form onSubmit={search}>
+            <input type="text" placeholder="Your Keyword Please..." />
+            <div className="iconSearchAdmin">
+              <button type="submit">Search</button>
+            </div>
+          </form>
+        </div>
       </div>
+
       <div className="main">
         {materi &&
           [...materi].reverse().map((m, index) => {
@@ -96,8 +134,8 @@ function ListMateriAdmin() {
                       <img src={DeleteIcon} alt="delete" />
                     </button>
                     {/* <button className="button2">
-                  <img src={EditIcon} alt="edit" />
-                </button> */}
+                      <img src={EditIcon} alt="edit" />
+                    </button> */}
                   </div>
                 </div>
               </div>
