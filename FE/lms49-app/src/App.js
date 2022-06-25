@@ -21,7 +21,7 @@ export default function App() {
           <Route path="/logout" element={<Logout />} />
           <Route path="/" element={<StudentDashboard />} />
           <Route path="/listmaterisiswa" element={<ListMateriStudent />} />
-          <Route path="/detailmateristudent/:id" element={<DetailMateriStudent />} />
+          <Route path="/detailmateri/:id" element={<DetailMateriStudent />} />
           <Route path="/admin/materi/create" element={<CreateMateri />} />
           <Route path="/admin/materi" element={<ListMateriAdmin />} />
         </Routes>
