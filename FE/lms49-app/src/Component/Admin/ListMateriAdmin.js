@@ -70,34 +70,39 @@ function ListMateriAdmin() {
           <text className="text">Courses</text>
         </div>
         <div>
-          <button className="button">
-            <text className="textButton">Tambah Data</text>
-          </button>
+          <a href="/admin/materi/create">
+            <button className="button">
+              <text className="textButton">Tambah Data</text>
+            </button>
+          </a>
         </div>
       </div>
       <div className="main">
-
-      {materi && [...materi].reverse().map((m, index) => {
-        return (
-          <div className="component" key={index}>
-            <div className="image">Gambar</div>
-            <div className="footerBox">
-              <div className="title">
-                <text className="subTitle1">{m.Title}</text>
-                <text className="subTitle2">{m.Creator}</text>
-              </div>
-              <div>
-                <button className="button1" onClick={() => deleteMateri(m.ID)}>
-                  <img src={DeleteIcon} alt="delete" />
-                </button>
-                {/* <button className="button2">
+        {materi &&
+          [...materi].reverse().map((m, index) => {
+            return (
+              <div className="component" key={index}>
+                <div className="image">Gambar</div>
+                <div className="footerBox">
+                  <div className="title">
+                    <text className="subTitle1">{m.Title}</text>
+                    <text className="subTitle2">{m.Creator}</text>
+                  </div>
+                  <div>
+                    <button
+                      className="button1"
+                      onClick={() => deleteMateri(m.ID)}
+                    >
+                      <img src={DeleteIcon} alt="delete" />
+                    </button>
+                    {/* <button className="button2">
                   <img src={EditIcon} alt="edit" />
                 </button> */}
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        );
-      })}
+            );
+          })}
       </div>
     </div>
   );
