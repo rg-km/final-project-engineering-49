@@ -88,7 +88,12 @@ function ListMateriStudent() {
 
         <div className="SearchBarComponent">
           <form onSubmit={search}>
-            <input type="text" placeholder="Your Keyword Please..." value={keyword}/>
+            <input
+              type="text"
+              placeholder="Your Keyword Please..."
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
+            />
             <div className="iconSearch">
               <button type="submit">Search</button>
             </div>
