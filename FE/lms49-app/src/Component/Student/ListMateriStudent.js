@@ -1,12 +1,6 @@
-import axios from "axios";
 import React from "react";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
+import Navbar from "../Navbar/Navbar"
 import "./Style/ListMateriStudent.css";
-import Navbar from "../Navbar/Navbar";
-import Sidebar from "../Sidebar/Sidebar";
-import Footer from "../Footer/Footer";
-import Gambar from "../../Assets/couses_1.png";
 
 function ListMateriStudent() {
 
@@ -49,6 +43,7 @@ function ListMateriStudent() {
   //   navigate("/detailmateri/" + id);
   // }
 
+// function ListMateriStudent() {
     return (
       <div className="containerListMateri">
         <div className="NavbarComponentListMateri">
@@ -102,4 +97,5 @@ function ListMateriStudent() {
       </div>
     );
   }
+  
 export default ListMateriStudent;
