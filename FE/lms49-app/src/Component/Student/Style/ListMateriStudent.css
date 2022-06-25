@@ -8,7 +8,7 @@
     color: orange;
     padding: 25px;
   }
-  
+
   .button {
     background-color: orange;
     font-size: small;
@@ -34,7 +34,7 @@
   
   .containerListMateri {
     background-color: #2C2A2A;
-    height: 100vh;
+    height: 200vmax;
     padding-right: 25px;
     padding-left: 25px;
   }
@@ -48,6 +48,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
   }
+
   .componentList {
     height: 40%;
     width: 30%;

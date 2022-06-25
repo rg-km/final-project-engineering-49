@@ -10,56 +10,73 @@ import Gambar from "../../Assets/couses_1.png";
 
 function ListMateriStudent() {
 
-  const [message, setMessage] = useState("");
-  const [token, setToken] = useState("");
-  const [materi, setMateri] = useState([]);
-  const navigate = useNavigate();
+  // const [message, setMessage] = useState("");
+  // const [token, setToken] = useState("");
+  // const [materi, setMateri] = useState([]);
+  // const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    }
-    setToken(token);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (!token) {
+  //     navigate("/login");
+  //   }
+  //   setToken(token);
 
-    axios
-    .get("http://localhost:8080/user", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((res) => {})
-    .catch((err) => {
-      navigate("/login");
-    })
+  //   axios
+  //   .get("http://localhost:8080/user", {
+  //     headers: { Authorization: `Bearer ${token}` },
+  //   })
+  //   .then((res) => {})
+  //   .catch((err) => {
+  //     navigate("/login");
+  //   })
     
-    axios
-    .get("http://localhost:8080/courses", {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then((res) => {
-      const response = res.data;
-      setMateri(response.data.Materi);
-    })
-    .catch((err) => {
-      setMessage(err.message);
-    })
+  //   axios
+  //   .get("http://localhost:8080/courses", {
+  //     headers: { Authorization: `Bearer ${token}` },
+  //   })
+  //   .then((res) => {
+  //     const response = res.data;
+  //     setMateri(response.data.Materi);
+  //   })
+  //   .catch((err) => {
+  //     setMessage(err.message);
+  //   })
 
-  }, [])
+  // }, [])
 
-  const detailMateri = (id) => {
-    navigate("/detailmateri/" + id);
-  }
+  // const detailMateri = (id) => {
+  //   navigate("/detailmateri/" + id);
+  // }
 
     return (
       <div className="containerListMateri">
-        <Navbar />
+        <div className="NavbarComponentListMateri">
+          <Navbar />
+        </div>
         <div className="AppListMateri">
           <div className="gapPage">
             <text className="textPage">Courses</text>
           </div>
         </div>
         <div className="mainList">
+        
+          <div className="componentList">
+            <div className="imageListMat">Gambar</div>
+            <div className="footerBox">
+              <div className="title">
+                <text className="subTitle1">Kontol</text>
+                <text className="subTitle2">Lodon</text>
+              </div>
+              <div>
+                <button className="button1">Detail Materi</button>
+                <button className="button2">Read Now</button>
+              </div>
+            </div>
+          </div>
+          
 
-          {materi && [...materi].reverse().map((m, index) => {
+          {/* {materi && [...materi].reverse().map((m, index) => {
             return (
               <div className="componentList" key={index}>
                 <div className="imageListMat">Gambar</div>
@@ -80,8 +97,7 @@ function ListMateriStudent() {
                 </div>
               </div>
             );
-          })}
-
+          })} */}
         </div>
       </div>
     );
