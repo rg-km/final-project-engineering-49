@@ -7,9 +7,11 @@ import "./Style/ListMateriStudent.css";
 
 function ListMateriStudent() {
 
-  const [message, setMessage] = useState("");
-  const [token, setToken] = useState("");
-  const [materi, setMateri] = useState([]);
+  const [ message, setMessage ] = useState("");
+  const [ token, setToken ] = useState("");
+  const [ materi, setMateri ] = useState([]);
+  const [ keyword, setKeyword ] = useState("");
+  const [ page, setPage ] = useState(1);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -46,6 +48,33 @@ function ListMateriStudent() {
     navigate("/detailmateri/" + id);
   }
 
+  const search = (e) => {
+    const page = 1
+    const limit = 10
+    e.preventDefault();
+    setPage(1);
+    axios
+      .get(
+        "http://localhost:8080/course/filter/" +
+          page +
+          "/" +
+          limit +
+          "?keyword=" +
+          keyword,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((res) => {
+        const response = res.data;
+        setMateri(response.data.Materi);
+      })
+      .catch((error) => {
+        setMessage(error.message);
+      });
+  };
+
+  
     return (
       <div className="containerListMateri">
         <div className="NavbarComponentListMateri">
@@ -56,30 +85,40 @@ function ListMateriStudent() {
             <text className="textPage">Courses</text>
           </div>
         </div>
-        <div className="mainList">  
 
-          {materi && [...materi].reverse().map((m, index) => {
-            return (
-              <div className="componentList" key={index}>
-                <div className="imageListMat">Gambar</div>
-                <div className="footerBox">
-                  <div className="title">
-                    <text className="subTitle1">{m.Title}</text>
-                    <text className="subTitle2">{m.Creator}</text>
-                  </div>
-                  <div>
-                    <button
-                      className="button1"
-                      onClick={() => detailMateri(m.ID)}
-                    >
-                      Detail Materi
-                    </button>
-                    <button className="button2">Read Now</button> 
+        <div className="SearchBarComponent">
+          <form onSubmit={search}>
+            <input type="text" placeholder="Your Keyword Please..." />
+            <div className="iconSearch">
+              <button type="submit">Search</button>
+            </div>
+          </form>
+        </div>
+
+        <div className="mainList">
+          {materi &&
+            [...materi].reverse().map((m, index) => {
+              return (
+                <div className="componentList" key={index}>
+                  <div className="imageListMat">Gambar</div>
+                  <div className="footerBox">
+                    <div className="title">
+                      <text className="subTitle1">{m.Title}</text>
+                      <text className="subTitle2">{m.Creator}</text>
+                    </div>
+                    <div>
+                      <button
+                        className="button1"
+                        onClick={() => detailMateri(m.ID)}
+                      >
+                        Detail Materi
+                      </button>
+                      <button className="button2">Read Now</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </div>
     );

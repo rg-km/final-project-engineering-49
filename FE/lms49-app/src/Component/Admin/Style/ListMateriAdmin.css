@@ -107,3 +107,40 @@
     width: 22px;
     height: 22px;
 }
+
+.SearchBarComponentAdmin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 36px;
+}
+
+.SearchBarComponentAdmin form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.SearchBarComponentAdmin input {
+  background-color: #171717;
+  border-color: #F9B234;
+  border-radius: 30px;
+  color: #F9B234;
+  margin-top: 3px;
+  padding: 15px 15px 15px 15px;
+  width: 390px;
+  height: 30px;
+}
+
+.SearchBarComponentAdmin ::placeholder {
+  color: #F9B234
+}
+
+.SearchBarComponentAdmin button {
+  color: #F9B234;
+  background-color: #171717;
+  border: 1px #F9B234 solid;
+  padding: 5px;
+  border-radius: 10px;
+  margin-left: 10px;
+}
