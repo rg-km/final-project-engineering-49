@@ -13,7 +13,7 @@ func Setuprouter(Handler *handler.Handler) *gin.Engine {
 	r := gin.Default()
 	r.Use(cors.New(cors.Config{
         AllowOrigins:     []string{"http://localhost:3000"},
-        AllowMethods:     []string{"POST","GET"},
+        AllowMethods:     []string{"POST","GET","DELETE"},
         AllowHeaders:     []string{"Origin","Token","Authorization","content-type"},
         ExposeHeaders:    []string{"Content-Length"},
         AllowCredentials: true,
