@@ -52,7 +52,7 @@ function ListMateriAdmin() {
   const deleteMateri = (id) => {
     axios
       .delete("http://localhost:8080/course/delete/" + id, {
-        headers: { Token: token },
+        headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
         const response = res.data;
