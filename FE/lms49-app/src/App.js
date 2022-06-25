@@ -21,8 +21,8 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/" element={<StudentDashboard />} />
-          <Route path="/listmaterisiswa" element={<ListMateriStudent />} />
-          <Route path="/detailmateri/:id" element={<DetailMateriStudent />} />
+          <Route path="/ListMateriStudent" element={<ListMateriStudent />} />
+          <Route path="/detailmateristudent/:id" element={<DetailMateriStudent />} />
         </Routes>
       </Router>
     );
