@@ -1,49 +1,51 @@
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import React from "react";
 import Navbar from "../Navbar/Navbar"
 import "./Style/ListMateriStudent.css";
 
 function ListMateriStudent() {
 
-  // const [message, setMessage] = useState("");
-  // const [token, setToken] = useState("");
-  // const [materi, setMateri] = useState([]);
-  // const navigate = useNavigate();
+  const [message, setMessage] = useState("");
+  const [token, setToken] = useState("");
+  const [materi, setMateri] = useState([]);
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   if (!token) {
-  //     navigate("/login");
-  //   }
-  //   setToken(token);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
+    setToken(token);
 
-  //   axios
-  //   .get("http://localhost:8080/user", {
-  //     headers: { Authorization: `Bearer ${token}` },
-  //   })
-  //   .then((res) => {})
-  //   .catch((err) => {
-  //     navigate("/login");
-  //   })
+    axios
+    .get("http://localhost:8080/user", {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((res) => {})
+    .catch((err) => {
+      navigate("/login");
+    })
     
-  //   axios
-  //   .get("http://localhost:8080/courses", {
-  //     headers: { Authorization: `Bearer ${token}` },
-  //   })
-  //   .then((res) => {
-  //     const response = res.data;
-  //     setMateri(response.data.Materi);
-  //   })
-  //   .catch((err) => {
-  //     setMessage(err.message);
-  //   })
+    axios
+    .get("http://localhost:8080/courses", {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((res) => {
+      const response = res.data;
+      setMateri(response.data.Materi);
+    })
+    .catch((err) => {
+      setMessage(err.message);
+    })
 
-  // }, [])
+  }, [])
 
-  // const detailMateri = (id) => {
-  //   navigate("/detailmateri/" + id);
-  // }
+  const detailMateri = (id) => {
+    navigate("/detailmateri/" + id);
+  }
 
-// function ListMateriStudent() {
     return (
       <div className="containerListMateri">
         <div className="NavbarComponentListMateri">
@@ -54,24 +56,9 @@ function ListMateriStudent() {
             <text className="textPage">Courses</text>
           </div>
         </div>
-        <div className="mainList">
-        
-          <div className="componentList">
-            <div className="imageListMat">Gambar</div>
-            <div className="footerBox">
-              <div className="title">
-                <text className="subTitle1">Kontol</text>
-                <text className="subTitle2">Lodon</text>
-              </div>
-              <div>
-                <button className="button1">Detail Materi</button>
-                <button className="button2">Read Now</button>
-              </div>
-            </div>
-          </div>
-          
+        <div className="mainList">  
 
-          {/* {materi && [...materi].reverse().map((m, index) => {
+          {materi && [...materi].reverse().map((m, index) => {
             return (
               <div className="componentList" key={index}>
                 <div className="imageListMat">Gambar</div>
@@ -92,7 +79,7 @@ function ListMateriStudent() {
                 </div>
               </div>
             );
-          })} */}
+          })}
         </div>
       </div>
     );

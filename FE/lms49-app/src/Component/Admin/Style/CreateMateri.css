@@ -69,15 +69,6 @@ span {
     align-items: center;
 }
 
-.buttonCreate12 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column-reverse;
-    Display : flex;
-    margin-top: -25px;
-}
-
 .containerCreateMateri button {
     width: 125px;
     background-color: #000;
