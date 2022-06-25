@@ -7,10 +7,10 @@ import TambahData from './TambahData';
 function CreateMateri() {
   return (
     <div className='CreateMateri'>
-        <Sidebar />
+        {/* <Sidebar /> */}
         {/* <SidebarAdmin /> */}
         {/* <ListMateriAdmin /> */}
-        {/* <TambahData /> */}
+        <TambahData />
     </div>
   )
 }
