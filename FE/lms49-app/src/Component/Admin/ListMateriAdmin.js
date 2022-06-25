@@ -107,7 +107,7 @@ function ListMateriAdmin() {
 
         <div className="SearchBarComponentAdmin">
           <form onSubmit={search}>
-            <input type="text" placeholder="Your Keyword Please..." />
+            <input type="text" placeholder="Your Keyword Please..." value={keyword}/>
             <div className="iconSearchAdmin">
               <button type="submit">Search</button>
             </div>
