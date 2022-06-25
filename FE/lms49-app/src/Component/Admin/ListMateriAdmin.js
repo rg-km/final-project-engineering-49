@@ -63,6 +63,18 @@ function ListMateriAdmin() {
       .catch((error) => {
         setMessage(error.message);
       });
+    
+    axios
+      .get("http://localhost:8080/courses", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        const response = res.data;
+        setMateri(response.data.Materi);
+      })
+      .catch((err) => {
+        setMessage(err.message);
+      })
   };
 
   const search = (e) => {
