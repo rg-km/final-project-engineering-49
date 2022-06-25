@@ -1,24 +1,109 @@
-/* body{
-    background:radial-gradient(#e5e5e5, #ffff, #e5e5e5);
- 
+.ListMateriAdmin {
+    /* background-color: blue; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  color: orange;
+  padding: 25px;
 }
 
-.ListMateriAdmin{
-    width: 20rem;
+.button {
+  background-color: orange;
+  padding: 10px;
+  border-radius: 20px;
+  width: 130px;
+  border-width: 0ch;
 }
 
-.ListMateriAdmin:hover {
-    box-shadow: 5px 10px 20px 1px rgba(0,0,0,0.253)!important;
-   
-    
+.text {
+  font-size: large;
+  font-weight: bold;
 }
 
-.ListMateriAdmin-body{    
-    padding: 3rem 0 !important;
+.textButton {
+  font-size: small;
+  font-weight: bold;
+  color: #000;
 }
 
-.list-title {
-    font-size: 9rem;
-    padding: 0.4rem 1.9rem;
-    text-align: center;
-} */
+.container {
+  background-color: #0009;
+  height: 100vh;
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+.main {
+  /* background-color: green; */
+  width: 100%;
+  height: 80vh;
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.component {
+  height: 40%;
+  width: 30%;
+  background-color: #000;
+  border-radius: 5px;
+}
+
+.image {
+  width: 100%;
+  height: 73%;
+  background-color: rgb(61, 159, 252);
+}
+
+.title {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  /* background-color: #fff; */
+  padding-left: 3px;
+}
+
+.subTitle1 {
+  font-weight: bold;
+  color: orange;
+  font-size: larger;
+}
+
+.subTitle2 {
+  color: orange;
+  font-size: small;
+}
+
+.footerBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 3px;
+  align-items: center;
+  /* background-color: blue; */
+  height: 50px;
+}
+
+.button1 {
+  height: 22px;
+  width: 22px;
+  border-radius: 50px;
+  border-color: orange;
+  background-color: #000;
+  border-width: 1.5px;
+}
+.button2 {
+  height: 22px;
+  width: 22px;
+  border-radius: 50px;
+  border-color: orange;
+  background-color: #000;
+  border-width: 1.5px;
+}
+
+ img {
+    width: 22px;
+    height: 22px;
+}

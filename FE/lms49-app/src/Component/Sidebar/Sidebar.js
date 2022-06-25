@@ -4,7 +4,7 @@ import LogoIcon from "../../Assets/Logo.png";
 import MenuIcon from "../../Assets/menu-regular-24.png";
 import SearchIcon from "../../Assets/search-regular-24.png";
 // import HomeIcon from "../../Assets/home-alt.png";
-import GridIcon from "../../Assets/grid-alt.png";
+// import GridIcon from "../../Assets/grid-alt.png";
 import CodeIcon from "../../Assets/code-block.png";
 // import LogoutIcon from "../../Assets/log-out.png";
 
@@ -28,10 +28,10 @@ function Sidebar() {
                             {/* <span className="tooltip">Home</span> */}
                         </li>
                         <li>
-                            <a href="#">
+                            {/* <a href="#">
                                 <img src={GridIcon} alt="grid" className="grid"/>
                                 <span className="links_name">Admin</span>
-                            </a>
+                            </a> */}
                             {/* <span className="tooltip">Dashboard</span> */}
                         </li>
                         <li>

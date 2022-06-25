@@ -1,10 +1,18 @@
 import React from 'react'
 import Sidebar from '../Sidebar/Sidebar'
+import SidebarAdmin from './SidebarAdmin'
+import ListMateriAdmin from './ListMateriAdmin';
+import TambahData from './TambahData';
 
-export default function CreateMateri() {
+function CreateMateri() {
   return (
-    <div>
+    <div className='CreateMateri'>
         <Sidebar />
+        {/* <SidebarAdmin /> */}
+        {/* <ListMateriAdmin /> */}
+        {/* <TambahData /> */}
     </div>
   )
 }
+
+export default CreateMateri;
