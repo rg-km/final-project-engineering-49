@@ -23,6 +23,7 @@ export default function App() {
           <Route path="/" element={<StudentDashboard />} />
           <Route path="/ListMateriStudent" element={<ListMateriStudent />} />
           <Route path="/detailmateristudent/:id" element={<DetailMateriStudent />} />
+          <Route path="ListMateriAdmin" element={<ListMateriAdmin />} />
         </Routes>
       </Router>
     );
